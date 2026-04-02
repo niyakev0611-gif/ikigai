@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人生地圖 — 活得有意義，走得有尊嚴</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Serif+TC:wght@300;400;700&family=Noto+Sans+TC:wght@300;400;500&family=Zen+Antique&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FDFAF3;--bg2:#F4EFE3;--bg3:#EDE5D4;
+  --ink:#1A1612;--ink2:#46403A;--ink3:#8A8077;--ink4:#B8B0A4;
+  --amber:#C07A0C;--amberL:#FDF2DC;--amberM:#F0BE50;--amberD:#8A5408;
+  --teal:#0A6B52;--tealL:#E0F4EE;
+  --night:#110F0C;--night2:#1E1A16;--night3:#2A2520;
+  --gold:#D4A843;
+  --border:#E0D9CC;--border2:#C8BFB0;
+  --serif:'Playfair Display','Noto Serif TC',serif;
+  --zen:'Zen Antique','Noto Serif TC',serif;
+  --sans:'Noto Sans TC',sans-serif;
+  --r:12px;--r2:20px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 40px;height:58px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,250,243,.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{font-family:var(--serif);font-size:17px;color:var(--ink);text-decoration:none}
+.logo em{color:var(--amber);font-style:italic}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{font-size:13px;color:var(--ink3);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--amber)}
+.nav-cta{background:var(--ink);color:var(--bg);border:none;padding:8px 20px;border-radius:100px;font-size:13px;font-family:var(--sans);cursor:pointer;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:var(--amber)}
+@media(max-width:640px){.nav-links{display:none}}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:.28}
+.hero-inner{position:relative;z-index:1;max-width:740px}
+.hero-jp{font-family:var(--zen);font-size:13px;letter-spacing:.3em;color:var(--amber);margin-bottom:20px}
+.hero-h1{font-size:clamp(44px,8vw,88px);color:var(--ink);line-height:1.1;margin-bottom:22px;letter-spacing:-.03em}
+.hero-h1 em{color:var(--amber);font-style:italic}
+.hero-sub{font-size:16px;color:var(--ink2);max-width:500px;margin:0 auto 44px;line-height:1.8;font-weight:300}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-p{background:var(--ink);color:var(--bg);border:none;padding:14px 34px;border-radius:100px;font-size:15px;font-family:var(--sans);cursor:pointer;text-decoration:none;transition:all .2s;display:inline-block}
+.btn-p:hover{background:var(--amber);transform:translateY(-2px)}
+.btn-s{background:transparent;color:var(--ink);border:1.5px solid var(--border2);padding:14px 34px;border-radius:100px;font-size:15px;font-family:var(--sans);cursor:pointer;text-decoration:none;transition:all .2s;display:inline-block}
+.btn-s:hover{border-color:var(--ink);transform:translateY(-2px)}
+.hero-note{margin-top:28px;font-size:12px;color:var(--ink4)}
+
+/* COUNTDOWN */
+#countdown{background:var(--night);min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:80px 24px}
+.cd-grain{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");opacity:.8;pointer-events:none}
+.cd-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(196,129,10,.1) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.cd-inner{position:relative;z-index:1;text-align:center;max-width:920px;width:100%}
+.cd-eyebrow{font-family:var(--zen);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:28px;opacity:.8}
+.cd-title{font-family:var(--serif);font-size:clamp(28px,5vw,50px);color:#F5EFE3;margin-bottom:10px}
+.cd-sub{font-size:14px;color:#6A6460;margin-bottom:44px;line-height:1.7}
+.cd-setup label{display:block;font-size:12px;color:#6A6460;margin-bottom:12px;letter-spacing:.1em;text-transform:uppercase}
+.cd-row{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
+.cd-inp{background:var(--night2);border:1px solid #3A342E;color:#E8DFD0;border-radius:var(--r);padding:11px 16px;font-size:15px;font-family:var(--sans);text-align:center;transition:border-color .2s}
+.cd-inp:focus{outline:none;border-color:var(--gold)}
+.cd-btn{background:var(--gold);color:var(--night);border:none;padding:11px 28px;border-radius:100px;font-size:14px;font-family:var(--sans);font-weight:500;cursor:pointer;transition:all .2s}
+.cd-btn:hover{background:var(--amberM)}
+.cd-display{display:none}
+.cd-quote{font-family:var(--serif);font-size:clamp(15px,2.5vw,21px);color:#9A9490;font-style:italic;margin-bottom:48px;line-height:1.65;max-width:560px;margin-left:auto;margin-right:auto}
+.cd-bars{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-bottom:48px}
+@media(max-width:600px){.cd-bars{grid-template-columns:repeat(3,1fr)}}
+.cd-bar-item{text-align:center}
+.cd-bar-lbl{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#4A4440;margin-bottom:10px}
+.cd-bar-track{background:#1C1814;border-radius:4px;height:5px;margin:8px 0 4px;overflow:hidden}
+.cd-bar-fill{height:100%;border-radius:4px;background:var(--gold);transition:width 1s ease}
+.cd-bar-fill.low{background:#B03020}
+.cd-num{font-family:var(--serif);font-size:clamp(26px,4vw,44px);color:#E8DFD0;line-height:1}
+.cd-unit{font-size:9px;color:#4A4440;letter-spacing:.1em;text-transform:uppercase}
+.cd-pct-wrap{margin-bottom:20px}
+.cd-pct{font-family:var(--serif);font-size:clamp(40px,7vw,68px);color:var(--gold);line-height:1}
+.cd-pct-sub{font-size:12px;color:#4A4440;margin-top:4px}
+.cd-weeks{display:flex;flex-wrap:wrap;gap:2px;justify-content:center;margin:32px auto;max-width:700px}
+.cd-week{width:6px;height:6px;border-radius:1px;background:#1C1814}
+.cd-week.lived{background:#3C3830}
+.cd-week.now{background:var(--gold);box-shadow:0 0 5px rgba(212,168,67,.6)}
+.cd-ticker{font-family:var(--zen);font-size:13px;color:#2E2A26;letter-spacing:.2em;margin-top:24px}
+.cd-ticker span{color:#5A5450}
+
+/* IKIGAI */
+#ikigai{padding:100px 24px;background:var(--night2);position:relative;overflow:hidden}
+.iki-bg{position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at 20% 50%,rgba(10,107,82,.07) 0%,transparent 60%),radial-gradient(ellipse 80% 100% at 80% 40%,rgba(196,129,10,.06) 0%,transparent 60%);pointer-events:none}
+.iki-wrap{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.iki-hdr{text-align:center;margin-bottom:60px}
+.iki-eyebrow{font-family:var(--zen);font-size:12px;letter-spacing:.3em;color:var(--gold);margin-bottom:14px}
+.iki-h2{font-family:var(--serif);font-size:clamp(28px,5vw,50px);color:#EDE5D4;margin-bottom:12px}
+.iki-sub{font-size:15px;color:#6A6460;max-width:500px;margin:0 auto;line-height:1.8;font-weight:300}
+.iki-layout{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+@media(max-width:720px){.iki-layout{grid-template-columns:1fr}}
+.iki-svg-wrap{display:flex;justify-content:center}
+.iki-svg{width:100%;max-width:340px}
+.iki-fields{display:flex;flex-direction:column;gap:16px}
+.iki-field{background:var(--night3);border:1px solid #2A2520;border-radius:var(--r2);padding:20px 22px;transition:border-color .25s}
+.iki-field:hover{border-color:#3E3530}
+.iki-field:focus-within{border-color:#5A4E3A}
+.iki-field-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.iki-field-icon{font-size:18px}
+.iki-field-title{font-family:var(--serif);font-size:14px;color:#C8BDB0}
+.iki-field-hint{font-size:12px;color:#4A4440;margin-bottom:10px;line-height:1.55}
+.iki-ta{width:100%;background:transparent;border:none;color:#E8DFD0;font-size:13px;font-family:var(--sans);resize:none;line-height:1.7;min-height:60px}
+.iki-ta:focus{outline:none}
+.iki-ta::placeholder{color:#3A342E}
+.iki-find-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:10px 26px;border-radius:100px;font-size:13px;font-family:var(--sans);cursor:pointer;transition:all .2s;margin-top:6px;width:100%}
+.iki-find-btn:hover{background:var(--gold);color:var(--night)}
+.iki-result{background:var(--night3);border:1px solid var(--gold);border-radius:var(--r2);padding:24px;margin-top:12px;display:none}
+.iki-result-lbl{font-family:var(--zen);font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:12px;text-transform:uppercase}
+.iki-result-txt{font-family:var(--serif);font-size:16px;color:#E8DFD0;line-height:1.7;font-style:italic}
+
+/* FEATURES */
+#features{padding:96px 24px;max-width:1080px;margin:0 auto}
+.sec-ey{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);font-weight:500;margin-bottom:10px}
+.sec-h2{font-size:clamp(26px,4vw,44px);color:var(--ink);margin-bottom:10px}
+.sec-sub{font-size:15px;color:var(--ink2);max-width:480px;line-height:1.8;font-weight:300}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:48px}
+.fc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:24px;transition:all .25s}
+.fc:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(26,22,18,.07);border-color:var(--border2)}
+.fc-icon{font-size:24px;margin-bottom:12px;display:block}
+.fc-title{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.fc-desc{font-size:12px;color:var(--ink3);line-height:1.65}
+.fc.hi{background:var(--amberL);border-color:#E8C878;position:relative}
+.fc.hi::after{content:'核心';position:absolute;top:14px;right:14px;background:var(--amber);color:#fff;font-size:9px;padding:2px 8px;border-radius:20px}
+
+/* HOW */
+#how{padding:96px 24px;max-width:860px;margin:0 auto}
+.steps{margin-top:48px}
+.step{display:grid;grid-template-columns:54px 1fr;gap:20px;padding:26px 0;border-top:1px solid var(--border)}
+.step:last-child{border-bottom:1px solid var(--border)}
+.step-num{font-family:var(--serif);font-size:36px;color:var(--border2);font-weight:700;align-self:start;padding-top:8px}
+.step-time{display:inline-block;font-size:10px;padding:2px 10px;border-radius:20px;background:var(--amberL);color:var(--amber);margin-bottom:7px;font-weight:500;letter-spacing:.05em}
+.step-h{font-family:var(--serif);font-size:19px;color:var(--ink);margin-bottom:6px}
+.step-p{font-size:13px;color:var(--ink2);line-height:1.7}
+.step-qs{margin-top:9px;display:flex;flex-direction:column;gap:4px}
+.step-q{font-size:12px;color:var(--ink3);padding-left:14px;position:relative;line-height:1.5}
+.step-q::before{content:'—';position:absolute;left:0;color:var(--border2)}
+
+/* GOODBYE */
+#goodbye{padding:96px 24px;background:var(--bg2)}
+.gb-wrap{max-width:980px;margin:0 auto}
+.gb-hdr{text-align:center;margin-bottom:56px}
+.gb-intro{font-size:15px;color:var(--ink2);max-width:560px;margin:10px auto 0;line-height:1.8}
+.gb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.gb-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r2);padding:26px;transition:all .25s}
+.gb-card:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(26,22,18,.06)}
+.gb-card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.gb-num{font-family:var(--serif);font-size:28px;color:var(--border2);font-weight:700;line-height:1;flex-shrink:0}
+.gb-card-title{font-family:var(--serif);font-size:16px;color:var(--ink);margin-bottom:3px}
+.gb-card-sub{font-size:11px;color:var(--amber)}
+.gb-check{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.gb-check:last-of-type{border-bottom:none}
+.gb-box{width:17px;height:17px;border-radius:3px;border:1.5px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:2px}
+.gb-box.done{background:var(--teal);border-color:var(--teal)}
+.gb-box.done::after{content:'✓';color:#fff;font-size:9px;font-weight:700}
+.gb-check-text{font-size:12px;color:var(--ink2);line-height:1.5;flex:1}
+.gb-check-text.done{color:var(--ink3);text-decoration:line-through}
+.gb-prog-row{display:flex;align-items:center;gap:9px;margin-top:12px}
+.gb-prog-wrap{flex:1;background:var(--border);border-radius:10px;height:4px;overflow:hidden}
+.gb-prog-bar{height:100%;border-radius:10px;background:var(--teal);transition:width .4s}
+.gb-prog-txt{font-size:10px;color:var(--ink3);white-space:nowrap}
+
+/* QUOTE */
+#quote-sec{padding:80px 24px;text-align:center}
+.q-box{max-width:600px;margin:0 auto;padding:48px 40px;background:var(--ink);border-radius:22px;position:relative}
+.q-mark{font-family:var(--serif);font-size:68px;color:var(--amber);position:absolute;top:-14px;left:26px;line-height:1;opacity:.35}
+.q-text{font-family:var(--serif);font-size:clamp(16px,3vw,23px);color:var(--bg);line-height:1.55;font-style:italic;margin-bottom:16px}
+.q-auth{font-size:11px;color:var(--amberM);letter-spacing:.1em;text-transform:uppercase}
+
+/* APP */
+#app{padding:80px 24px 120px;max-width:840px;margin:0 auto}
+.app-hdr{text-align:center;margin-bottom:44px}
+.app-tabs{display:flex;background:var(--bg2);border:1px solid var(--border);border-radius:100px;padding:4px;margin-bottom:32px;overflow-x:auto;scrollbar-width:none}
+.app-tabs::-webkit-scrollbar{display:none}
+.app-tab{flex-shrink:0;padding:7px 17px;border-radius:100px;border:none;background:transparent;font-size:12px;font-family:var(--sans);color:var(--ink3);cursor:pointer;transition:all .2s;white-space:nowrap}
+.app-tab.active{background:var(--ink);color:var(--bg);font-weight:500}
+.panel{display:none;animation:pIn .3s ease}
+.panel.active{display:block}
+@keyframes pIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.ins-box{border-left:3px solid var(--amber);padding:11px 15px;background:var(--amberL);border-radius:0 var(--r) var(--r) 0;margin-bottom:20px}
+.ins-t{font-size:11px;font-weight:500;color:var(--amber);margin-bottom:3px}
+.ins-b{font-size:13px;color:var(--ink2);line-height:1.6}
+.qb{margin-bottom:18px}
+.ql{font-size:13px;color:var(--ink2);margin-bottom:6px;line-height:1.55}
+.qi{width:100%;border:1px solid var(--border);border-radius:var(--r);padding:11px 13px;font-size:14px;font-family:var(--sans);color:var(--ink);background:var(--bg2);resize:vertical;min-height:76px;line-height:1.65;transition:border-color .2s}
+.qi:focus{outline:none;border-color:var(--amber)}
+.qi.sh{min-height:48px;resize:none}
+.sbtn{width:100%;background:var(--amber);color:#fff;border:none;border-radius:var(--r);padding:12px;font-size:14px;font-family:var(--sans);font-weight:500;cursor:pointer;margin-top:6px;transition:background .2s}
+.sbtn:hover{background:var(--amberD)}
+.rb{background:var(--ink);border-radius:18px;padding:28px 30px;margin-bottom:24px;position:relative;overflow:hidden}
+.rb::before{content:'';position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:rgba(196,129,10,.1)}
+.rb-lbl{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.rb-title{font-family:var(--serif);font-size:clamp(17px,3vw,22px);color:#EDE5D4;margin-bottom:7px}
+.rb-sub{font-size:13px;color:#6A6460;line-height:1.6;max-width:460px}
+.time-tabs{display:flex;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:24px}
+.time-tab{flex:1;padding:10px;text-align:center;border:none;background:var(--bg);font-size:13px;font-family:var(--sans);color:var(--ink3);cursor:pointer;transition:all .2s}
+.time-tab.active{background:var(--amber);color:#fff;font-weight:500}
+.cr{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.cr:first-of-type{border-top:1px solid var(--border)}
+.cc{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.cc.done{background:var(--teal);border-color:var(--teal)}
+.cc.done::after{content:'✓';color:#fff;font-size:10px;font-weight:700}
+.cl{font-size:14px;color:var(--ink);flex:1;line-height:1.5}
+.cl.done{color:var(--ink3);text-decoration:line-through}
+.lens-sec{margin-top:24px}
+.lens-h{font-family:var(--serif);font-size:17px;color:var(--ink);margin-bottom:4px}
+.lens-s{font-size:13px;color:var(--ink3);margin-bottom:14px;line-height:1.55}
+.lr{display:grid;grid-template-columns:84px 1fr;gap:10px;align-items:center;margin-bottom:9px}
+.ll{font-size:11px;font-weight:500;color:var(--ink3)}
+.li{border:1px solid var(--border);border-radius:var(--r);padding:8px 12px;font-size:14px;font-family:var(--sans);color:var(--ink);background:var(--bg2);width:100%;transition:border-color .2s}
+.li:focus{outline:none;border-color:var(--amber)}
+.sc{border:1px solid var(--border);border-radius:var(--r2);padding:20px;margin-top:20px;display:none}
+.sc-t{font-size:10px;font-weight:500;color:var(--ink3);margin-bottom:12px;letter-spacing:.06em;text-transform:uppercase}
+.sr{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--border)}
+.sr:last-child{border-bottom:none}
+.si{font-size:16px;flex-shrink:0}
+.sm{font-size:10px;color:var(--ink3);margin-bottom:2px}
+.sv{font-size:14px;color:var(--ink);line-height:1.5}
+.comp{background:var(--tealL);border:1px solid #A0D8CA;border-radius:var(--r2);padding:26px;text-align:center;margin-bottom:20px;display:none}
+.comp-i{font-size:30px;margin-bottom:7px}
+.comp-h{font-family:var(--serif);font-size:19px;color:#054D3A;margin-bottom:5px}
+.comp-s{font-size:13px;color:var(--teal);line-height:1.6}
+.sg-card{border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin-bottom:9px}
+.sg-card.open{border-color:var(--amber)}
+.sg-hdr{padding:15px 19px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:var(--bg)}
+.sg-hdr:hover{background:var(--bg2)}
+.sg-nm{display:flex;align-items:center;gap:10px}
+.sg-e{font-size:19px}
+.sg-lbl{font-size:14px;font-weight:500;color:var(--ink)}
+.sg-age{font-size:10px;color:var(--ink3)}
+.sg-ch{font-size:10px;color:var(--ink3);transition:transform .2s}
+.sg-card.open .sg-ch{transform:rotate(180deg)}
+.sg-body{display:none;border-top:1px solid var(--border);padding:16px 19px;background:var(--bg)}
+.sg-card.open .sg-body{display:block}
+.sg-prompt{font-size:13px;color:var(--ink3);margin-bottom:9px;line-height:1.6;font-style:italic}
+.sg-ta{width:100%;border:1px solid var(--border);border-radius:var(--r);padding:10px 12px;font-size:14px;font-family:var(--sans);color:var(--ink);background:var(--bg2);resize:vertical;min-height:90px;line-height:1.7;transition:border-color .2s}
+.sg-ta:focus{outline:none;border-color:var(--amber)}
+.vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:8px;margin-bottom:16px}
+.vc{border:1px solid var(--border);border-radius:var(--r);padding:12px 7px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg)}
+.vc:hover{border-color:var(--border2);transform:translateY(-1px)}
+.vc.sel{border-color:var(--amber);background:var(--amberL)}
+.ve{font-size:21px;display:block;margin-bottom:4px}
+.vn{font-size:10px;color:var(--ink);font-weight:500}
+.vc.sel .vn{color:var(--amber)}
+.stb{border:1px solid var(--border);border-radius:var(--r);padding:13px 15px;margin-bottom:16px;display:none}
+.stb-l{font-size:10px;color:var(--ink3);margin-bottom:7px;text-transform:uppercase;letter-spacing:.07em;font-weight:500}
+.stb-t{display:flex;flex-wrap:wrap;gap:6px}
+.stag{background:var(--amberL);border-radius:100px;padding:4px 11px;font-size:11px;color:var(--amber);font-weight:500}
+.gr{margin-bottom:13px}
+.gl{font-size:11px;color:var(--ink3);font-weight:500;margin-bottom:5px}
+.gi{width:100%;border:1px solid var(--border);border-radius:var(--r);padding:9px 12px;font-size:14px;font-family:var(--sans);color:var(--ink);background:var(--bg2);transition:border-color .2s}
+.gi:focus{outline:none;border-color:var(--amber)}
+.pt{font-size:11px;color:var(--ink3);margin-bottom:7px}
+.pw{background:var(--border);border-radius:10px;height:5px;overflow:hidden;margin-bottom:16px}
+.pb{height:100%;border-radius:10px;background:var(--teal);transition:width .4s}
+.bi{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.bi:first-child{border-top:1px solid var(--border)}
+.bt{font-size:14px;color:var(--ink);flex:1;line-height:1.4}
+.bt.done{color:var(--ink3);text-decoration:line-through}
+.ar{display:flex;gap:8px;margin-top:13px}
+.ai{flex:1;border:1px solid var(--border);border-radius:var(--r);padding:9px 12px;font-size:14px;font-family:var(--sans);color:var(--ink);background:var(--bg2);transition:border-color .2s}
+.ai:focus{outline:none;border-color:var(--amber)}
+.ab{background:var(--amber);color:#fff;border:none;border-radius:var(--r);padding:9px 18px;font-size:14px;font-family:var(--sans);font-weight:500;cursor:pointer;white-space:nowrap}
+.ab:hover{background:var(--amberD)}
+.rt{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.rtab{border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:12px;font-family:var(--sans);color:var(--ink3);background:var(--bg);cursor:pointer;transition:all .2s}
+.rtab:hover{border-color:var(--border2)}
+.rtab.active{background:var(--amberL);border-color:var(--amber);color:var(--amber)}
+.lta{width:100%;border:1px solid var(--border);border-radius:var(--r2);padding:18px;font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--bg2);resize:vertical;min-height:230px;line-height:1.9;transition:border-color .2s}
+.lta:focus{outline:none;border-color:var(--amber)}
+.lmeta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.lsal{font-family:var(--serif);font-size:16px;color:var(--ink);font-style:italic}
+.ldt{font-size:11px;color:var(--ink3)}
+.lsig{font-family:var(--serif);font-size:13px;color:var(--ink3);font-style:italic;margin-top:8px;text-align:right}
+
+/* CTA */
+#cta{padding:96px 24px;text-align:center;background:var(--night);position:relative;overflow:hidden}
+#cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(196,129,10,.1),transparent)}
+.cta-h{font-family:var(--serif);font-size:clamp(26px,5vw,50px);color:#F0E8DC;margin-bottom:13px}
+.cta-s{font-size:15px;color:#6A6460;max-width:440px;margin:0 auto 30px;line-height:1.8;font-weight:300}
+.cta-btn{background:var(--gold);color:var(--night);border:none;padding:14px 36px;border-radius:100px;font-size:15px;font-family:var(--sans);font-weight:500;cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s}
+.cta-btn:hover{background:var(--amberM);transform:translateY(-2px)}
+
+footer{padding:32px 24px;text-align:center;border-top:1px solid var(--border)}
+footer p{font-size:13px;color:var(--ink3);line-height:2}
+
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 18px;border-radius:100px;font-size:13px;white-space:nowrap;z-index:999;animation:tIn .25s ease;box-shadow:0 8px 28px rgba(0,0,0,.2)}
+@keyframes tIn{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+.rev{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.rev.vis{opacity:1;transform:translateY(0)}
+
+/* LANGUAGE SELECTOR */
+.lang-sel{position:relative;margin-right:10px}
+.lang-btn{background:transparent;border:1px solid var(--border2);border-radius:100px;padding:5px 12px 5px 10px;font-size:12px;font-family:var(--sans);color:var(--ink3);cursor:pointer;display:flex;align-items:center;gap:5px;transition:all .2s;white-space:nowrap}
+.lang-btn:hover{border-color:var(--ink3);color:var(--ink)}
+.lang-arrow{font-size:8px;transition:transform .2s;display:inline-block}
+.lang-sel.open .lang-arrow{transform:rotate(180deg)}
+.lang-drop{display:none;position:absolute;right:0;top:calc(100% + 6px);background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:4px;min-width:108px;box-shadow:0 8px 24px rgba(26,22,18,.1);z-index:300}
+.lang-sel.open .lang-drop{display:block}
+.lang-opt{display:block;width:100%;padding:8px 12px;background:transparent;border:none;text-align:left;font-size:13px;font-family:var(--sans);color:var(--ink2);cursor:pointer;border-radius:6px;transition:background .15s}
+.lang-opt:hover{background:var(--bg2)}
+.lang-opt.active{color:var(--amber);font-weight:500}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#hero">人生地圖<em>.</em></a>
+  <div class="nav-links">
+    <a href="#countdown">倒數計時</a>
+    <a href="#ikigai">Ikigai</a>
+    <a href="#goodbye">好好告別</a>
+    <a href="#app">開始使用</a>
+  </div>
+  <div class="lang-sel" id="langSel">
+    <button class="lang-btn" onclick="toggleLangMenu()">
+      <span id="langCurrent">正體中文</span>
+      <span class="lang-arrow">▾</span>
+    </button>
+    <div class="lang-drop">
+      <button class="lang-opt active" onclick="setLang('zh')">正體中文</button>
+      <button class="lang-opt" onclick="setLang('zhs')">简中</button>
+      <button class="lang-opt" onclick="setLang('en')">English</button>
+      <button class="lang-opt" onclick="setLang('ja')">日本語</button>
+    </div>
+  </div>
+  <a class="nav-cta" href="#app">立刻開始</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <p class="hero-jp">生き甲斐 · 人生地圖 · 好好告別</p>
+    <h1 class="hero-h1">活得<em>有意義</em>，<br>走得<em>有尊嚴</em></h1>
+    <p class="hero-sub">找到你的 Ikigai，盤點你的人生，好好計畫你的身後事。每一刻，都值得被好好看見。</p>
+    <div class="hero-btns">
+      <a href="#countdown" class="btn-p">看看你還有多少時間 →</a>
+      <a href="#ikigai" class="btn-s">找到你的 Ikigai</a>
+    </div>
+    <p class="hero-note">完全免費 · 資料僅存在你的瀏覽器 · 無需註冊</p>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section id="countdown">
+  <div class="cd-grain"></div>
+  <div class="cd-glow"></div>
+  <div class="cd-inner">
+    <p class="cd-eyebrow">光陰似箭 · 一寸光陰一寸金</p>
+    <h2 class="cd-title">你的人生，正在流逝</h2>
+    <p class="cd-sub">不是為了恐懼，而是為了清醒。<br>每一秒都是你無法買回的資產。</p>
+    <div id="cdSetup" class="cd-setup">
+      <label>輸入你的生日與預期壽命，開始你的人生倒數</label>
+      <div class="cd-row">
+        <input class="cd-inp" type="date" id="cdBirth">
+        <input class="cd-inp" type="number" id="cdLife" value="85" min="50" max="120" style="width:90px">
+        <span style="font-size:12px;color:#5A5450">歲</span>
+        <button class="cd-btn" onclick="startCD()">開始倒數</button>
+      </div>
+      <p style="font-size:11px;color:#2E2A26;margin-top:10px">資料不會上傳，僅在你的瀏覽器中計算</p>
+    </div>
+    <div class="cd-display" id="cdDisplay">
+      <p class="cd-quote" id="cdQuote"></p>
+      <div class="cd-pct-wrap"><div class="cd-pct" id="cdPct">—</div><div class="cd-pct-sub">的人生已經過去</div></div>
+      <div class="cd-bars" id="cdBars"></div>
+      <div class="cd-weeks" id="cdWeeks"></div>
+      <div class="cd-ticker" id="cdTicker"></div>
+    </div>
+  </div>
+</section>
+
+<!-- IKIGAI -->
+<section id="ikigai">
+  <div class="iki-bg"></div>
+  <div class="iki-wrap">
+    <div class="iki-hdr rev">
+      <p class="iki-eyebrow">生き甲斐 · Ikigai</p>
+      <h2 class="iki-h2">你活著的理由</h2>
+      <p class="iki-sub">Ikigai 是日文「生存的意義」。它存在於四個圓的交集：你愛的、你擅長的、世界需要的、你能維生的。</p>
+    </div>
+    <div class="iki-layout">
+      <div class="iki-svg-wrap rev">
+        <svg class="iki-svg" viewBox="0 0 320 330" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="rg1"><stop offset="0%" stop-color="#C07A0C" stop-opacity=".38"/><stop offset="100%" stop-color="#C07A0C" stop-opacity=".08"/></radialGradient>
+            <radialGradient id="rg2"><stop offset="0%" stop-color="#0A6B52" stop-opacity=".38"/><stop offset="100%" stop-color="#0A6B52" stop-opacity=".08"/></radialGradient>
+            <radialGradient id="rg3"><stop offset="0%" stop-color="#7A2A60" stop-opacity=".32"/><stop offset="100%" stop-color="#7A2A60" stop-opacity=".07"/></radialGradient>
+            <radialGradient id="rg4"><stop offset="0%" stop-color="#2A508A" stop-opacity=".32"/><stop offset="100%" stop-color="#2A508A" stop-opacity=".07"/></radialGradient>
+          </defs>
+          <circle cx="148" cy="125" r="88" fill="url(#rg1)" stroke="#C07A0C" stroke-width=".7" stroke-opacity=".5"/>
+          <circle cx="178" cy="125" r="88" fill="url(#rg2)" stroke="#0A6B52" stroke-width=".7" stroke-opacity=".5"/>
+          <circle cx="148" cy="162" r="88" fill="url(#rg3)" stroke="#7A2A60" stroke-width=".7" stroke-opacity=".5"/>
+          <circle cx="178" cy="162" r="88" fill="url(#rg4)" stroke="#2A508A" stroke-width=".7" stroke-opacity=".5"/>
+          <text font-family="'Noto Serif TC',serif" font-size="11" fill="#BDB5A8" text-anchor="middle" x="107" y="78">你愛做的事</text>
+          <text font-family="'Noto Serif TC',serif" font-size="11" fill="#BDB5A8" text-anchor="middle" x="219" y="78">你擅長的事</text>
+          <text font-family="'Noto Serif TC',serif" font-size="11" fill="#BDB5A8" text-anchor="middle" x="107" y="248">世界需要的</text>
+          <text font-family="'Noto Serif TC',serif" font-size="11" fill="#BDB5A8" text-anchor="middle" x="219" y="248">能維生的</text>
+          <text font-family="'Noto Serif TC',serif" font-size="9" fill="#6A6460" text-anchor="middle" x="163" y="105">熱情</text>
+          <text font-family="'Noto Serif TC',serif" font-size="9" fill="#6A6460" text-anchor="middle" x="205" y="145">專業</text>
+          <text font-family="'Noto Serif TC',serif" font-size="9" fill="#6A6460" text-anchor="middle" x="163" y="225">使命</text>
+          <text font-family="'Noto Serif TC',serif" font-size="9" fill="#6A6460" text-anchor="middle" x="122" y="145">志業</text>
+          <circle cx="163" cy="144" r="24" fill="#161210" stroke="#D4A843" stroke-width="1.2"/>
+          <text font-family="'Zen Antique','Noto Serif TC',serif" font-size="11" fill="#D4A843" text-anchor="middle" x="163" y="140">生き</text>
+          <text font-family="'Zen Antique','Noto Serif TC',serif" font-size="11" fill="#D4A843" text-anchor="middle" x="163" y="154">甲斐</text>
+        </svg>
+      </div>
+      <div class="iki-fields rev">
+        <div class="iki-field">
+          <div class="iki-field-top"><span class="iki-field-icon">❤️</span><span class="iki-field-title">你愛做的事</span></div>
+          <div class="iki-field-hint">什麼事讓你忘記時間流逝？讓你充滿活力？</div>
+          <textarea class="iki-ta" id="iki-love" placeholder="寫下讓你心跳加速的事..." rows="3"></textarea>
+        </div>
+        <div class="iki-field">
+          <div class="iki-field-top"><span class="iki-field-icon">💪</span><span class="iki-field-title">你擅長的事</span></div>
+          <div class="iki-field-hint">朋友為了什麼來找你？你覺得輕鬆但別人覺得難的事？</div>
+          <textarea class="iki-ta" id="iki-good" placeholder="寫下你天生就擅長的事..." rows="3"></textarea>
+        </div>
+        <div class="iki-field">
+          <div class="iki-field-top"><span class="iki-field-icon">🌍</span><span class="iki-field-title">世界需要的</span></div>
+          <div class="iki-field-hint">你希望解決什麼問題？讓世界更好的哪個方向？</div>
+          <textarea class="iki-ta" id="iki-need" placeholder="寫下你看到的缺口或需求..." rows="3"></textarea>
+        </div>
+        <div class="iki-field">
+          <div class="iki-field-top"><span class="iki-field-icon">💰</span><span class="iki-field-title">能讓你維生的</span></div>
+          <div class="iki-field-hint">你能被人付費的技能或服務是什麼？</div>
+          <textarea class="iki-ta" id="iki-pay" placeholder="寫下你能創造價值的方式..." rows="3"></textarea>
+        </div>
+        <button class="iki-find-btn" onclick="findIkigai()">找出我的 Ikigai →</button>
+        <div class="iki-result" id="ikiRes">
+          <div class="iki-result-lbl">你的 Ikigai 輪廓</div>
+          <div class="iki-result-txt" id="ikiResTxt"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="rev">
+    <p class="sec-ey">六個面向</p>
+    <h2 class="sec-h2">全面看見自己</h2>
+    <p class="sec-sub">從人生意義到身後安排，最完整的人生盤點空間。</p>
+  </div>
+  <div class="feat-grid rev">
+    <div class="fc hi"><span class="fc-icon">🔥</span><div class="fc-title">一日重置協議</div><div class="fc-desc">Dan Koe 方法論。早/中/晚三段深度提問，打破慣性，重設人生方向。</div></div>
+    <div class="fc"><span class="fc-icon">生き甲斐</span><div class="fc-title">Ikigai 盤點</div><div class="fc-desc">找到你愛做、擅長、世界需要、能維生四個圓的交集，那就是你活著的理由。</div></div>
+    <div class="fc"><span class="fc-icon">🕰️</span><div class="fc-title">人生各階段回顧</div><div class="fc-desc">童年到此刻，逐一回顧每個階段的記憶、選擇與感受。</div></div>
+    <div class="fc"><span class="fc-icon">🧭</span><div class="fc-title">價值觀盤點</div><div class="fc-desc">找出你真正在乎的事，設定 1/5/10 年的人生方向。</div></div>
+    <div class="fc"><span class="fc-icon">✨</span><div class="fc-title">遺願清單</div><div class="fc-desc">把那些「總有一天要做的事」寫下來，然後開始一一實現。</div></div>
+    <div class="fc"><span class="fc-icon">📋</span><div class="fc-title">好好告別清單</div><div class="fc-desc">臨終照顧、遺囑、葬禮、遺產、保險——五大面向完整規劃。</div></div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="rev">
+    <p class="sec-ey">一日重置協議</p>
+    <h2 class="sec-h2">三個時段，重設人生</h2>
+  </div>
+  <div class="steps rev">
+    <div class="step"><div class="step-num">01</div><div><div class="step-time">☀️ 早上</div><h3 class="step-h">反願景 + 正願景</h3><p class="step-p">先直視你不想要的人生，再翻轉到你真正渴望的。這個對比是改變最強的燃料。</p><div class="step-qs"><p class="step-q">我已經學會忍受哪些不滿？</p><p class="step-q">如果什麼都不變，10 年後我的人生是什麼樣子？</p><p class="step-q">3 年後，我想要什麼樣的人生？</p></div></div></div>
+    <div class="step"><div class="step-num">02</div><div><div class="step-time">🌤 白天</div><h3 class="step-h">打破自動駕駛</h3><p class="step-p">在不同時刻暫停，問自己這幾個問題。大多數人一輩子都活在自動導航模式。</p><div class="step-qs"><p class="step-q">我現在在逃避什麼？</p><p class="step-q">我在選擇安全，還是活著？</p></div></div></div>
+    <div class="step"><div class="step-num">03</div><div><div class="step-time">🌙 晚上</div><h3 class="step-h">整合 + 設定鏡頭</h3><p class="step-p">整合今天的發現，寫下核心洞見，設定三個「鏡頭」——方向感，而非硬性目標。</p><div class="step-qs"><p class="step-q">一句話：我拒絕繼續過的人生是⋯</p><p class="step-q">明天，那個未來的我會做什麼？</p></div></div></div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section id="quote-sec">
+  <div class="q-box rev">
+    <div class="q-mark">"</div>
+    <p class="q-text">你沒有你想要的人生，是因為你還不是那個「會擁有那種人生」的人。改變不從行為開始，從身份認同開始。</p>
+    <p class="q-auth">— Dan Koe</p>
+  </div>
+</section>
+
+<!-- GOODBYE -->
+<section id="goodbye">
+  <div class="gb-wrap">
+    <div class="gb-hdr rev">
+      <p class="sec-ey" style="text-align:center">好好告別</p>
+      <h2 class="sec-h2" style="text-align:center">身後事，也是愛的一部分</h2>
+      <p class="gb-intro">提前規劃身後事，不是悲觀，是給自己和家人最深情的禮物。五大面向，逐一確認。</p>
+    </div>
+    <div class="gb-grid rev" id="gbGrid"></div>
+  </div>
+</section>
+
+<!-- APP -->
+<section id="app">
+  <div class="app-hdr rev">
+    <p class="sec-ey">開始使用</p>
+    <h2 class="sec-h2">你的人生地圖</h2>
+    <p class="sec-sub" style="margin:0 auto;text-align:center">資料即時存在你的瀏覽器，完全私密。</p>
+  </div>
+  <div class="app-tabs" id="appTabs">
+    <button class="app-tab active" data-panel="reset">🔥 一日重置</button>
+    <button class="app-tab" data-panel="stages">🕰️ 人生回顧</button>
+    <button class="app-tab" data-panel="values">🧭 價值觀</button>
+    <button class="app-tab" data-panel="bucket">✨ 遺願清單</button>
+    <button class="app-tab" data-panel="letter">✉️ 給未來的信</button>
+  </div>
+
+  <!-- RESET PANEL -->
+  <div class="panel active" id="panel-reset">
+    <div class="rb"><div class="rb-lbl">Dan Koe 方法論</div><h3 class="rb-title">改變身份認同，而非行為</h3><p class="rb-sub">你不需要更多紀律。你需要看清自己在優化什麼，然後重新選擇你是誰。</p></div>
+    <div class="time-tabs"><button class="time-tab active" data-time="morning">☀️ 早上</button><button class="time-tab" data-time="day">🌤 白天</button><button class="time-tab" data-time="evening">🌙 晚上</button></div>
+    <div id="t-morning">
+      <div class="ins-box"><div class="ins-t">第一步：反願景（Anti-Vision）</div><div class="ins-b">先直視你不想要的人生。這個不適感會成為你改變最強的燃料。</div></div>
+      <div class="qb"><div class="ql">我已經學會忍受哪些不滿？</div><textarea class="qi" id="a1" placeholder="說真心話，不用美化..."></textarea></div>
+      <div class="qb"><div class="ql">我一直在抱怨但從不改變什麼？</div><textarea class="qi" id="a2" placeholder="那個你反覆提到卻停在原地的事..."></textarea></div>
+      <div class="qb"><div class="ql">如果什麼都不變，5–10 年後我的人生是什麼樣子？</div><textarea class="qi" id="a3" placeholder="想像最真實的未來..."></textarea></div>
+      <div class="qb"><div class="ql">我必須放棄什麼身份認同才能改變？</div><textarea class="qi" id="a4" placeholder="「我是一個＿＿的人」讓你卡住了嗎？"></textarea></div>
+      <div class="ins-box" style="margin-top:24px"><div class="ins-t">第二步：正願景（Vision）</div><div class="ins-b">現在把視角翻轉。你想要什麼？那個版本的你是誰？</div></div>
+      <div class="qb"><div class="ql">如果能打個響指，3 年後我想要什麼樣的人生？</div><textarea class="qi" id="v1" placeholder="盡量具體，住在哪裡、做什麼、身邊是誰..."></textarea></div>
+      <div class="qb"><div class="ql">我必須對自己相信什麼，那種人生才會感覺自然？</div><textarea class="qi" id="v2" placeholder="「我是一個會⋯⋯的人」"></textarea></div>
+      <div class="qb"><div class="ql">那個版本的我，這週會做什麼？</div><textarea class="qi" id="v3" placeholder="最小的、可立刻執行的行動..."></textarea></div>
+      <button class="sbtn" onclick="switchTime('day');toast('早上篇已儲存 ☀️')">儲存，前往白天篇 →</button>
+    </div>
+    <div id="t-day" style="display:none">
+      <div class="ins-box"><div class="ins-t">打破自動駕駛</div><div class="ins-b">在白天不同時刻暫停，問自己這四個問題。勾選代表你今天有意識地覺察了。</div></div>
+      <div id="dayChecks">
+        <div class="cr" data-id="d1"><div class="cc" id="cc-d1"></div><span class="cl" id="cl-d1">我現在在逃避什麼？</span></div>
+        <div class="cr" data-id="d2"><div class="cc" id="cc-d2"></div><span class="cl" id="cl-d2">我的行為說明我真正想要什麼？</span></div>
+        <div class="cr" data-id="d3"><div class="cc" id="cc-d3"></div><span class="cl" id="cl-d3">我在選擇安全，還是活著？</span></div>
+        <div class="cr" data-id="d4"><div class="cc" id="cc-d4"></div><span class="cl" id="cl-d4">今天什麼時候我感覺最有生命力？</span></div>
+      </div>
+      <button class="sbtn" style="margin-top:16px" onclick="switchTime('evening');toast('白天覺察已記錄 🌤')">前往晚上整合 →</button>
+    </div>
+    <div id="t-evening" style="display:none">
+      <div class="comp" id="compCard"><div class="comp-i">🎯</div><div class="comp-h">一日重置完成！</div><p class="comp-s">你今天做了很多人一輩子都不願意做的事：誠實地面對自己。</p></div>
+      <div class="ins-box" id="evIns"><div class="ins-t">整合今天的發現</div><div class="ins-b">不要評判你寫下的內容。這些誠實的文字，是改變的起點。</div></div>
+      <div class="qb"><div class="ql">我為什麼真的一直卡在這裡？</div><textarea class="qi" id="e1" placeholder="不要表面答案，往深處挖..."></textarea></div>
+      <div class="qb"><div class="ql">哪個內在模式是我真正的敵人？</div><textarea class="qi" id="e2" placeholder="恐懼評判？害怕失敗？貪圖舒適？"></textarea></div>
+      <div class="qb"><div class="ql">一句話：我拒絕繼續過的人生是⋯</div><textarea class="qi sh" id="e3" placeholder="寫下那個「絕對不行」的畫面"></textarea></div>
+      <div class="qb"><div class="ql">一句話：我正在建造的是⋯</div><textarea class="qi sh" id="e4" placeholder="你的北極星，簡短有力"></textarea></div>
+      <div class="lens-sec">
+        <h3 class="lens-h">設定三個「鏡頭」</h3>
+        <p class="lens-s">方向感，而非硬性目標。讓它們引導你注意什麼、行動什麼。</p>
+        <div class="lr"><span class="ll">1 年後</span><input class="li" id="ly" placeholder="舊模式破碎的證明是⋯"></div>
+        <div class="lr"><span class="ll">這個月</span><input class="li" id="lm" placeholder="一個具體的專案是⋯"></div>
+        <div class="lr"><span class="ll">明天</span><input class="li" id="ld" placeholder="那個未來的我會做的事⋯"></div>
+      </div>
+      <button class="sbtn" onclick="saveEvening()">封存今日的洞見 🔥</button>
+      <div class="sc" id="scCard"><div class="sc-t">今日摘要</div><div id="scRows"></div></div>
+    </div>
+  </div>
+
+  <!-- STAGES -->
+  <div class="panel" id="panel-stages">
+    <p style="font-size:14px;color:var(--ink3);margin-bottom:20px;line-height:1.7">沒有對錯，只有你真實的感受。慢慢寫，記錄任何浮現的片段。</p>
+    <div id="sgList"></div>
+  </div>
+
+  <!-- VALUES -->
+  <div class="panel" id="panel-values">
+    <p style="font-size:13px;color:var(--ink3);margin-bottom:14px">選出最能代表你核心的價值觀（最多 5 個）</p>
+    <div class="vg" id="vGrid"></div>
+    <div class="stb" id="stbBox"><div class="stb-l">我最重視的事</div><div class="stb-t" id="stbTags"></div></div>
+    <div style="margin-top:6px"><h3 style="font-family:var(--serif);font-size:18px;color:var(--ink);margin-bottom:14px">人生目標</h3>
+    <div class="gr"><div class="gl">1 年後，我希望⋯</div><input class="gi" id="g1" placeholder="寫下你的一年目標"></div>
+    <div class="gr"><div class="gl">5 年後，我希望⋯</div><input class="gi" id="g5" placeholder="寫下你的五年目標"></div>
+    <div class="gr"><div class="gl">10 年後，我希望⋯</div><input class="gi" id="g10" placeholder="寫下你的十年目標"></div>
+    <button class="sbtn" style="margin-top:4px" onclick="toast('價值觀已儲存 🧭')">儲存我的價值觀</button></div>
+  </div>
+
+  <!-- BUCKET -->
+  <div class="panel" id="panel-bucket">
+    <div class="pt" id="bkPt">已完成 0/8 項</div>
+    <div class="pw"><div class="pb" id="bkBar" style="width:0%"></div></div>
+    <div id="bkList"></div>
+    <div class="ar"><input class="ai" id="nBk" placeholder="加入新的心願⋯"><button class="ab" onclick="addBk()">新增</button></div>
+  </div>
+
+  <!-- LETTER -->
+  <div class="panel" id="panel-letter">
+    <div class="rt" id="recTabs">
+      <button class="rtab active" data-idx="0">未來的自己</button>
+      <button class="rtab" data-idx="1">子女</button>
+      <button class="rtab" data-idx="2">伴侶</button>
+      <button class="rtab" data-idx="3">父母</button>
+    </div>
+    <div class="lmeta"><span class="lsal" id="lSal">親愛的未來的自己，</span><span class="ldt" id="lDt"></span></div>
+    <textarea class="lta" id="lArea" placeholder="從心開始寫⋯&#10;&#10;有什麼話想說？有什麼想讓對方知道的事？&#10;這封信，會在正確的時間被讀到。"></textarea>
+    <p class="lsig" id="lSig"></p>
+    <button class="sbtn" style="margin-top:10px" onclick="saveLetter()">封存這封信 ✉️</button>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <h2 class="cta-h rev">準備好好看見自己了嗎？</h2>
+  <p class="cta-s rev">只需要一個安靜的時刻，和對自己的誠實。</p>
+  <a href="#app" class="cta-btn rev">現在開始 →</a>
+</section>
+
+<footer>
+  <p>人生地圖 · 活得有意義，走得有尊嚴<br>
+  生き甲斐 · Ikigai · 好好告別<br>
+  <span style="font-size:11px;color:var(--ink4)">資料僅存在你的瀏覽器，不上傳任何伺服器 · 完全免費</span></p>
+</footer>
+
+<script>
+const STAGES=[
+  {id:'child',label:'童年',age:'0–12 歲',emoji:'🌱',prompt:'那時候什麼讓你最快樂？有什麼夢想？'},
+  {id:'teen',label:'青少年',age:'13–18 歲',emoji:'🌿',prompt:'你最重要的轉折或成長是什麼？誰影響了你？'},
+  {id:'young',label:'青年',age:'19–30 歲',emoji:'🌳',prompt:'你做了哪些重要的選擇？有什麼遺憾或驕傲？'},
+  {id:'adult',label:'壯年',age:'31–50 歲',emoji:'🌲',prompt:'你的人生重心是什麼？實現了什麼？失去了什麼？'},
+  {id:'now',label:'此刻',age:'現在',emoji:'✨',prompt:'現在最重要的事是什麼？你希望記住什麼？'},
+];
+const VALUES=[
+  {id:'love',name:'愛與陪伴',e:'❤️'},{id:'freedom',name:'自由',e:'🕊️'},{id:'family',name:'家庭',e:'🏠'},
+  {id:'create',name:'創造力',e:'🎨'},{id:'health',name:'健康',e:'🌿'},{id:'achieve',name:'成就',e:'🏆'},
+  {id:'wisdom',name:'智慧',e:'📚'},{id:'impact',name:'影響力',e:'🌊'},{id:'adventure',name:'冒險',e:'🗺️'},
+  {id:'peace',name:'內心平靜',e:'🌙'},{id:'faith',name:'信仰',e:'🙏'},{id:'wealth',name:'財富',e:'💎'},
+];
+const INIT_BK=['看一次極光','學會一種樂器','寫一封信給每位家人','完成一部短篇小說','為陌生人做一件好事','獨自旅行一次','與老朋友重聚','記錄父母的人生故事'];
+const RECS=['未來的自己','子女','伴侶','父母'];
+const GB=[
+  {title:'臨終照顧',sub:'安寧緩和・DNR・預立醫療決定',icon:'🌿',checks:['與家人討論自己對臨終照顧的期望','了解安寧緩和醫療的申請程序','諮詢預立醫療決定（AD）辦理方式','確認是否需要簽署 DNR 意願書','指定一名醫療代理人','了解居家安寧或住院安寧的差異']},
+  {title:'預立遺囑',sub:'自書・公證・代筆・特留分',icon:'📜',checks:['盤點名下所有財產（含負債）','決定遺囑形式（建議公證遺囑）','指定遺囑執行人並告知對方','確認財產分配符合特留分規定','告知家人或律師遺囑存放位置','每隔 3–5 年重新檢視遺囑']},
+  {title:'葬禮計畫',sub:'土葬・火葬・環保葬・器官捐贈',icon:'🕊️',checks:['決定身後安葬方式','書面記錄告別式的具體偏好','登記器官捐贈意願（如有意願）','了解政府環保葬補助政策','研究葬儀社費用，必要時提前簽約','將葬禮計畫告知家人或執行人']},
+  {title:'遺產繼承',sub:'繼承順序・限定繼承・遺產稅',icon:'⚖️',checks:['生前整理並記錄所有財產清單','了解法定繼承人及應繼分','考量是否透過遺囑或信託提前規劃','確認遺產稅免稅額及可用扣除額','了解生前贈與節稅策略及限制','死亡後六個月內完成遺產稅申報']},
+  {title:'保險給付',sub:'壽險・意外險・勞保・受益人',icon:'🛡️',checks:['整理所有保單，記錄保險公司和受益人','確認每張保單的受益人明確指定','逢重大人生改變時更新受益人','告知家人保單存放位置及理賠聯絡','了解勞保、國保遺屬給付的申請資格','發生事故後盡快通知保險公司']},
+];
+const CD_QUOTES=['「你還有多少個夏天？」','「時間不等人，但你可以好好使用它。」','「每一個今天，都是你剩餘人生的第一天。」','「死亡不是生命的終點，遺忘才是。」','「活著的意義不在於長度，在於深度。」','「現在就是你餘生中最年輕的一刻。」'];
+
+let selVals=[],bkItems=INIT_BK.map((t,i)=>({id:i+1,text:t,done:i===2||i===6}));
+let letters=['','','',''],curRec=0,dayChks={},gbChks={},cdInterval=null;
+
+function init(){
+  buildStages();buildValues();buildBucket();buildGB();
+  initLetter();initDayChks();initTimeTabs();initAppTabs();initReveal();
+  document.getElementById('lDt').textContent=new Date().toLocaleDateString('zh-TW');
+  document.getElementById('lSig').textContent=`愛你的 我 · ${new Date().getFullYear()}年`;
+}
+
+// COUNTDOWN
+function startCD(){
+  const b=document.getElementById('cdBirth').value,life=parseInt(document.getElementById('cdLife').value)||85;
+  if(!b){toast('請輸入你的生日');return;}
+  const birth=new Date(b),end=new Date(b);
+  end.setFullYear(end.getFullYear()+life);
+  document.getElementById('cdSetup').style.display='none';
+  document.getElementById('cdDisplay').style.display='block';
+  document.getElementById('cdQuote').textContent=CD_QUOTES[Math.floor(Math.random()*CD_QUOTES.length)];
+  buildWeeks(birth,end,life);
+  if(cdInterval)clearInterval(cdInterval);
+  updateCD(birth,end,life);
+  cdInterval=setInterval(()=>updateCD(birth,end,life),1000);
+}
+function updateCD(birth,end,life){
+  const now=new Date(),totalMs=end-birth,remMs=Math.max(0,end-now);
+  const pct=Math.min(100,(now-birth)/totalMs*100);
+  const remD=Math.floor(remMs/86400000),remH=Math.floor(remMs/3600000),remMin=Math.floor(remMs/60000),remS=Math.floor(remMs/1000);
+  const remW=Math.floor(remD/7),remMo=Math.floor(remD/30.44);
+  const remY=Math.max(0,end.getFullYear()-now.getFullYear()-(now>new Date(now.getFullYear(),end.getMonth(),end.getDate())?1:0));
+  document.getElementById('cdPct').textContent=pct.toFixed(3)+'%';
+  const _t=LANGS[currentLang];
+  const bars=[
+    {lbl:_t.cdUnits[0],val:remY,pct:remY/life*100},
+    {lbl:_t.cdUnits[1],val:remMo,pct:remMo/(life*12)*100},
+    {lbl:_t.cdUnits[2],val:remW,pct:remW/(life*52)*100},
+    {lbl:_t.cdUnits[3],val:remD,pct:remD/(life*365)*100},
+    {lbl:_t.cdUnits[4],val:remH%24,pct:(remH%24)/24*100},
+    {lbl:_t.cdUnits[5],val:remMin%60,pct:(remMin%60)/60*100},
+  ];
+  document.getElementById('cdBars').innerHTML=bars.map(b=>`
+    <div class="cd-bar-item">
+      <div class="cd-bar-lbl">${b.lbl}</div>
+      <div class="cd-num">${b.val.toLocaleString()}</div>
+      <div class="cd-bar-track"><div class="cd-bar-fill${b.pct<25?' low':''}" style="width:${b.pct}%"></div></div>
+      <div class="cd-unit">${_t.cdRemaining}</div>
+    </div>`).join('');
+  document.getElementById('cdTicker').innerHTML=`<span>${_t.cdTickerLabel}</span><br>${remS.toLocaleString()}`;
+}
+function buildWeeks(birth,end,life){
+  const totalW=life*52,livedW=Math.floor((new Date()-birth)/604800000);
+  const el=document.getElementById('cdWeeks');el.innerHTML='';
+  for(let i=0;i<totalW;i++){
+    const d=document.createElement('div');
+    d.className='cd-week'+(i<livedW?' lived':i===livedW?' now':'');
+    el.appendChild(d);
+  }
+}
+
+// IKIGAI
+function findIkigai(){
+  const love=document.getElementById('iki-love').value.trim();
+  const good=document.getElementById('iki-good').value.trim();
+  const need=document.getElementById('iki-need').value.trim();
+  const pay=document.getElementById('iki-pay').value.trim();
+  const filled=[love,good,need,pay].filter(Boolean);
+  if(!filled.length){toast('請至少填寫一個欄位');return;}
+  let txt='';
+  if(filled.length>=3)txt=`從你寫下的內容，你的 Ikigai 輪廓是：一個在「${love||good}」與「${need||pay}」之間找到交集的人。你正在用你擅長且熱愛的方式，為世界創造你獨特的價值。繼續深挖這個交集。`;
+  else txt=`你已經看見一些輪廓了。繼續填寫其他欄位，讓你的 Ikigai 更清晰完整。`;
+  const el=document.getElementById('ikiRes');
+  document.getElementById('ikiResTxt').textContent=txt;
+  el.style.display='block';
+  toast('Ikigai 已記錄 生き甲斐');
+}
+
+// GOODBYE
+function buildGB(){
+  document.getElementById('gbGrid').innerHTML=GB.map((cat,ci)=>{
+    const chks=cat.checks.map((c,i)=>`
+      <div class="gb-check" onclick="togGB(${ci},${i})">
+        <div class="gb-box${gbChks[ci+'-'+i]?' done':''}" id="gb-${ci}-${i}">${gbChks[ci+'-'+i]?'<span style="color:#fff;font-size:9px;font-weight:700">✓</span>':''}</div>
+        <span class="gb-check-text${gbChks[ci+'-'+i]?' done':''}" id="gbt-${ci}-${i}">${c}</span>
+      </div>`).join('');
+    const done=cat.checks.filter((_,i)=>gbChks[ci+'-'+i]).length,pct=Math.round(done/cat.checks.length*100);
+    return`<div class="gb-card">
+      <div class="gb-card-top"><div class="gb-num">${String(ci+1).padStart(2,'0')}</div>
+      <div><div class="gb-card-title">${cat.icon} ${cat.title}</div><div class="gb-card-sub">${cat.sub}</div></div></div>
+      ${chks}
+      <div class="gb-prog-row"><div class="gb-prog-wrap"><div class="gb-prog-bar" id="gbp-${ci}" style="width:${pct}%"></div></div>
+      <span class="gb-prog-txt" id="gbpt-${ci}">${done}/${cat.checks.length}</span></div>
+    </div>`;
+  }).join('');
+}
+function togGB(ci,i){
+  const k=ci+'-'+i;gbChks[k]=!gbChks[k];
+  const box=document.getElementById(`gb-${ci}-${i}`),txt=document.getElementById(`gbt-${ci}-${i}`);
+  box.classList.toggle('done',gbChks[k]);
+  box.innerHTML=gbChks[k]?'<span style="color:#fff;font-size:9px;font-weight:700">✓</span>':'';
+  txt.classList.toggle('done',gbChks[k]);
+  const done=GB[ci].checks.filter((_,ii)=>gbChks[ci+'-'+ii]).length,pct=Math.round(done/GB[ci].checks.length*100);
+  document.getElementById(`gbp-${ci}`).style.width=pct+'%';
+  document.getElementById(`gbpt-${ci}`).textContent=`${done}/${GB[ci].checks.length}`;
+}
+
+// STAGES
+function buildStages(){
+  document.getElementById('sgList').innerHTML=STAGES.map(s=>`
+    <div class="sg-card" id="sc-${s.id}">
+      <div class="sg-hdr" onclick="togStage('${s.id}')">
+        <div class="sg-nm"><span class="sg-e">${s.emoji}</span><div><div class="sg-lbl">${s.label}</div><div class="sg-age">${s.age}</div></div></div>
+        <span class="sg-ch">▼</span>
+      </div>
+      <div class="sg-body">
+        <p class="sg-prompt">${s.prompt}</p>
+        <textarea class="sg-ta" placeholder="在這裡自由書寫..."></textarea>
+        <button class="sbtn" style="margin-top:8px" onclick="toast('已儲存 ✓')">儲存這段記憶</button>
+      </div>
+    </div>`).join('');
+}
+function togStage(id){document.getElementById('sc-'+id).classList.toggle('open');}
+
+// VALUES
+function buildValues(){
+  document.getElementById('vGrid').innerHTML=VALUES.map(v=>`
+    <div class="vc" id="vc-${v.id}" onclick="togVal('${v.id}')">
+      <span class="ve">${v.e}</span><span class="vn">${v.name}</span>
+    </div>`).join('');
+}
+function togVal(id){
+  if(selVals.includes(id))selVals=selVals.filter(x=>x!==id);
+  else{if(selVals.length>=5){toast('最多選 5 個');return;}selVals.push(id);}
+  VALUES.forEach(v=>document.getElementById('vc-'+v.id)?.classList.toggle('sel',selVals.includes(v.id)));
+  const box=document.getElementById('stbBox');
+  if(selVals.length>0){box.style.display='block';document.getElementById('stbTags').innerHTML=selVals.map(sid=>{const v=VALUES.find(x=>x.id===sid);return`<span class="stag">${v.e} ${v.name}</span>`;}).join('');}
+  else box.style.display='none';
+}
+
+// BUCKET
+function buildBucket(){
+  const done=bkItems.filter(i=>i.done).length,pct=Math.round(done/bkItems.length*100);
+  document.getElementById('bkList').innerHTML=bkItems.map(it=>`
+    <div class="bi" onclick="togBk(${it.id})">
+      <div class="cc${it.done?' done':''}" id="bc-${it.id}">${it.done?'<span style="color:#fff;font-size:10px;font-weight:700">✓</span>':''}</div>
+      <span class="bt${it.done?' done':''}">${it.text}</span>
+    </div>`).join('');
+  document.getElementById('bkPt').textContent=`已完成 ${done}/${bkItems.length} 項 · ${pct}%`;
+  document.getElementById('bkBar').style.width=pct+'%';
+}
+function togBk(id){bkItems=bkItems.map(i=>i.id===id?{...i,done:!i.done}:i);buildBucket();}
+function addBk(){const el=document.getElementById('nBk');if(!el.value.trim())return;bkItems.push({id:Date.now(),text:el.value.trim(),done:false});el.value='';buildBucket();}
+
+// LETTER
+function initLetter(){
+  document.querySelectorAll('#recTabs .rtab').forEach(t=>t.addEventListener('click',()=>{
+    letters[curRec]=document.getElementById('lArea').value;
+    curRec=parseInt(t.dataset.idx);
+    document.querySelectorAll('#recTabs .rtab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('lSal').textContent=`親愛的 ${RECS[curRec]}，`;
+    document.getElementById('lArea').value=letters[curRec];
+  }));
+}
+function saveLetter(){letters[curRec]=document.getElementById('lArea').value;toast('信件已封存 ✉️');}
+
+// DAY CHECKS
+function initDayChks(){
+  document.querySelectorAll('#dayChecks .cr').forEach(row=>row.addEventListener('click',()=>{
+    const id=row.dataset.id;dayChks[id]=!dayChks[id];
+    const c=document.getElementById('cc-'+id),l=document.getElementById('cl-'+id);
+    c.classList.toggle('done',dayChks[id]);
+    c.innerHTML=dayChks[id]?'<span style="color:#fff;font-size:10px;font-weight:700">✓</span>':'';
+    l.classList.toggle('done',dayChks[id]);
+  }));
+}
+
+// TIME TABS
+function initTimeTabs(){document.querySelectorAll('.time-tab').forEach(t=>t.addEventListener('click',()=>switchTime(t.dataset.time)));}
+function switchTime(t){
+  document.querySelectorAll('.time-tab').forEach(tab=>tab.classList.toggle('active',tab.dataset.time===t));
+  ['morning','day','evening'].forEach(id=>document.getElementById('t-'+id).style.display=id===t?'block':'none');
+}
+
+// APP TABS
+function initAppTabs(){
+  document.querySelectorAll('#appTabs .app-tab').forEach(t=>t.addEventListener('click',()=>{
+    document.querySelectorAll('#appTabs .app-tab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    document.getElementById('panel-'+t.dataset.panel).classList.add('active');
+  }));
+}
+
+// EVENING
+function saveEvening(){
+  const e3=document.getElementById('e3').value.trim(),e4=document.getElementById('e4').value.trim();
+  const ld=document.getElementById('ld').value.trim(),ly=document.getElementById('ly').value.trim(),lm=document.getElementById('lm').value.trim();
+  if(document.getElementById('e1').value.trim()&&document.getElementById('e2').value.trim()&&e3&&e4&&ly&&lm&&ld){
+    document.getElementById('compCard').style.display='block';document.getElementById('evIns').style.display='none';
+  }
+  if(e3||e4||ld){
+    const sc=document.getElementById('scCard');sc.style.display='block';
+    document.getElementById('scRows').innerHTML=[
+      e3?`<div class="sr"><span class="si">🚫</span><div><div class="sm">拒絕繼續</div><div class="sv">${e3}</div></div></div>`:'',
+      e4?`<div class="sr"><span class="si">🧭</span><div><div class="sm">正在建造</div><div class="sv">${e4}</div></div></div>`:'',
+      ld?`<div class="sr" style="border-bottom:none"><span class="si">⚡</span><div><div class="sm">明天就做</div><div class="sv">${ld}</div></div></div>`:'',
+    ].join('');
+  }
+  toast('一日重置完成 🔥');
+}
+
+// TOAST
+function toast(msg){
+  document.querySelector('.toast')?.remove();
+  const el=document.createElement('div');el.className='toast';el.textContent=msg;
+  document.body.appendChild(el);setTimeout(()=>el.remove(),2400);
+}
+
+// REVEAL
+function initReveal(){
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.12});
+  document.querySelectorAll('.rev').forEach(el=>obs.observe(el));
+}
+
+// keyboard enter for bucket
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('nBk')?.addEventListener('keydown',e=>{if(e.key==='Enter')addBk();});
+});
+
+// ───────── LANGUAGE SWITCHER ─────────
+let currentLang='zh';
+
+const LANGS={
+  zh:{
+    langLabel:'正體中文',
+    navCountdown:'倒數計時',navGoodbye:'好好告別',navStart:'開始使用',navCta:'立刻開始',
+    heroJp:'生き甲斐 · 人生地圖 · 好好告別',
+    heroH1:'活得<em>有意義</em>，<br>走得<em>有尊嚴</em>',
+    heroSub:'找到你的 Ikigai，盤點你的人生，好好計畫你的身後事。每一刻，都值得被好好看見。',
+    heroBtn1:'看看你還有多少時間 →',heroBtn2:'找到你的 Ikigai',
+    heroNote:'完全免費 · 資料僅存在你的瀏覽器 · 無需註冊',
+    cdEyebrow:'光陰似箭 · 一寸光陰一寸金',cdTitle:'你的人生，正在流逝',
+    cdSub:'不是為了恐懼，而是為了清醒。<br>每一秒都是你無法買回的資產。',
+    cdLabel:'輸入你的生日與預期壽命，開始你的人生倒數',
+    cdAgeUnit:'歲',cdBtn:'開始倒數',cdPctSub:'的人生已經過去',
+    cdRemaining:'剩餘',cdTickerLabel:'剩餘秒數',cdUnits:['年','月','週','天','時','分'],
+    ikiEyebrow:'生き甲斐 · Ikigai',ikiH2:'你活著的理由',
+    ikiSub:'Ikigai 是日文「生存的意義」。它存在於四個圓的交集：你愛的、你擅長的、世界需要的、你能維生的。',
+    iki1Title:'你愛做的事',iki1Hint:'什麼事讓你忘記時間流逝？讓你充滿活力？',iki1Ph:'寫下讓你心跳加速的事...',
+    iki2Title:'你擅長的事',iki2Hint:'朋友為了什麼來找你？你覺得輕鬆但別人覺得難的事？',iki2Ph:'寫下你天生就擅長的事...',
+    iki3Title:'世界需要的',iki3Hint:'你希望解決什麼問題？讓世界更好的哪個方向？',iki3Ph:'寫下你看到的缺口或需求...',
+    iki4Title:'能讓你維生的',iki4Hint:'你能被人付費的技能或服務是什麼？',iki4Ph:'寫下你能創造價值的方式...',
+    ikiFindBtn:'找出我的 Ikigai →',ikiResultLabel:'你的 Ikigai 輪廓',
+    svgLabels:['你愛做的事','你擅長的事','世界需要的','能維生的','熱情','專業','使命','志業'],
+    featEy:'六個面向',featH2:'全面看見自己',featSub:'從人生意義到身後安排，最完整的人生盤點空間。',
+    howEy:'一日重置協議',howH2:'三個時段，重設人生',
+    gbEy:'好好告別',gbH2:'身後事，也是愛的一部分',gbIntro:'提前規劃身後事，不是悲觀，是給自己和家人最深情的禮物。五大面向，逐一確認。',
+    appEy:'開始使用',appH2:'你的人生地圖',appSub:'資料即時存在你的瀏覽器，完全私密。',
+    ctaH:'準備好好看見自己了嗎？',ctaS:'只需要一個安靜的時刻，和對自己的誠實。',ctaBtn:'現在開始 →',
+    footer1:'人生地圖 · 活得有意義，走得有尊嚴',footer2:'生き甲斐 · Ikigai · 好好告別',
+    footer3:'資料僅存在你的瀏覽器，不上傳任何伺服器 · 完全免費',
+    quoteText:'你沒有你想要的人生，是因為你還不是那個「會擁有那種人生」的人。改變不從行為開始，從身份認同開始。',
+  },
+  zhs:{
+    langLabel:'简中',
+    navCountdown:'倒计时',navGoodbye:'好好告别',navStart:'开始使用',navCta:'立刻开始',
+    heroJp:'生き甲斐 · 人生地图 · 好好告别',
+    heroH1:'活得<em>有意义</em>，<br>走得<em>有尊严</em>',
+    heroSub:'找到你的 Ikigai，盘点你的人生，好好规划你的身后事。每一刻，都值得被好好看见。',
+    heroBtn1:'看看你还有多少时间 →',heroBtn2:'找到你的 Ikigai',
+    heroNote:'完全免费 · 数据仅存于你的浏览器 · 无需注册',
+    cdEyebrow:'光阴似箭 · 一寸光阴一寸金',cdTitle:'你的人生，正在流逝',
+    cdSub:'不是为了恐惧，而是为了清醒。<br>每一秒都是你无法买回的资产。',
+    cdLabel:'输入你的生日与预期寿命，开始你的人生倒计时',
+    cdAgeUnit:'岁',cdBtn:'开始倒计时',cdPctSub:'的人生已经过去',
+    cdRemaining:'剩余',cdTickerLabel:'剩余秒数',cdUnits:['年','月','周','天','时','分'],
+    ikiEyebrow:'生き甲斐 · Ikigai',ikiH2:'你活着的理由',
+    ikiSub:'Ikigai 是日文「生存的意义」。它存在于四个圆的交集：你爱的、你擅长的、世界需要的、你能维生的。',
+    iki1Title:'你爱做的事',iki1Hint:'什么事让你忘记时间流逝？让你充满活力？',iki1Ph:'写下让你心跳加速的事...',
+    iki2Title:'你擅长的事',iki2Hint:'朋友为了什么来找你？你觉得轻松但别人觉得难的事？',iki2Ph:'写下你天生就擅长的事...',
+    iki3Title:'世界需要的',iki3Hint:'你希望解决什么问题？让世界更好的哪个方向？',iki3Ph:'写下你看到的缺口或需求...',
+    iki4Title:'能让你维生的',iki4Hint:'你能被人付费的技能或服务是什么？',iki4Ph:'写下你能创造价值的方式...',
+    ikiFindBtn:'找出我的 Ikigai →',ikiResultLabel:'你的 Ikigai 轮廓',
+    svgLabels:['你爱做的事','你擅长的事','世界需要的','能维生的','热情','专业','使命','志业'],
+    featEy:'六个面向',featH2:'全面看见自己',featSub:'从人生意义到身后安排，最完整的人生盘点空间。',
+    howEy:'一日重置协议',howH2:'三个时段，重设人生',
+    gbEy:'好好告别',gbH2:'身后事，也是爱的一部分',gbIntro:'提前规划身后事，不是悲观，是给自己和家人最深情的礼物。五大面向，逐一确认。',
+    appEy:'开始使用',appH2:'你的人生地图',appSub:'数据即时存于你的浏览器，完全私密。',
+    ctaH:'准备好好看见自己了吗？',ctaS:'只需要一个安静的时刻，和对自己的诚实。',ctaBtn:'现在开始 →',
+    footer1:'人生地图 · 活得有意义，走得有尊严',footer2:'生き甲斐 · Ikigai · 好好告别',
+    footer3:'数据仅存于你的浏览器，不上传任何服务器 · 完全免费',
+    quoteText:'你没有你想要的人生，是因为你还不是那个「会拥有那种人生」的人。改变不从行为开始，从身份认同开始。',
+  },
+  en:{
+    langLabel:'EN',
+    navCountdown:'Countdown',navGoodbye:'Final Farewell',navStart:'Get Started',navCta:'Start Now',
+    heroJp:'Ikigai · Life Map · Final Farewell',
+    heroH1:'Live with <em>Purpose</em>,<br>Die with <em>Dignity</em>',
+    heroSub:'Find your Ikigai, reflect on your life, plan your legacy. Every moment deserves to be truly seen.',
+    heroBtn1:'See How Much Time You Have →',heroBtn2:'Find Your Ikigai',
+    heroNote:'Completely Free · Data stays in your browser · No sign-up needed',
+    cdEyebrow:'Time Flies · Every Second Counts',cdTitle:'Your Life is Slipping Away',
+    cdSub:'Not to cause fear, but to inspire clarity.<br>Every second is an asset you can never buy back.',
+    cdLabel:'Enter your birthday and expected lifespan to start your countdown',
+    cdAgeUnit:'yrs',cdBtn:'Start Countdown',cdPctSub:'of your life has passed',
+    cdRemaining:'left',cdTickerLabel:'Seconds Remaining',cdUnits:['Yrs','Mos','Wks','Days','Hrs','Min'],
+    ikiEyebrow:'Ikigai · 生き甲斐',ikiH2:'Your Reason for Being',
+    ikiSub:"Ikigai is the Japanese concept of 'reason for being.' It lives at the intersection of four circles: what you love, what you're good at, what the world needs, and what you can be paid for.",
+    iki1Title:'What You Love',iki1Hint:'What makes you lose track of time? What energizes you?',iki1Ph:'Write what makes your heart race...',
+    iki2Title:"What You're Good At",iki2Hint:"What do friends come to you for? What feels easy to you but hard for others?",iki2Ph:"Write what you're naturally gifted at...",
+    iki3Title:'What the World Needs',iki3Hint:'What problems do you want to solve? What would make the world better?',iki3Ph:'Write the gaps or needs you see...',
+    iki4Title:'What You Can Be Paid For',iki4Hint:'What skills or services can people pay you for?',iki4Ph:'Write how you can create value...',
+    ikiFindBtn:'Find My Ikigai →',ikiResultLabel:'Your Ikigai Outline',
+    svgLabels:['What You Love',"What You're\nGood At",'World Needs','Paid For','Passion','Profession','Mission','Vocation'],
+    featEy:'Six Dimensions',featH2:'See Yourself Fully',featSub:"From life's meaning to end-of-life arrangements, the most complete life reflection space.",
+    howEy:'Daily Reset Protocol',howH2:'Three Sessions to Reset Your Life',
+    gbEy:'Final Farewell',gbH2:'End-of-Life Planning is an Act of Love',gbIntro:"Planning ahead isn't pessimism — it's the most loving gift you can give yourself and your family.",
+    appEy:'Get Started',appH2:'Your Life Map',appSub:'Your data stays in your browser, completely private.',
+    ctaH:'Ready to Truly See Yourself?',ctaS:'All it takes is a quiet moment and honesty with yourself.',ctaBtn:'Begin Now →',
+    footer1:'Life Map · Live with Purpose, Die with Dignity',footer2:'Ikigai · 生き甲斐 · Final Farewell',
+    footer3:'Data stays in your browser only · Nothing is uploaded · Completely free',
+    quoteText:"You don't have the life you want because you haven't yet become the person who would have that life. Change doesn't start with behavior — it starts with identity.",
+  },
+  ja:{
+    langLabel:'日本語',
+    navCountdown:'カウントダウン',navGoodbye:'終活',navStart:'始める',navCta:'今すぐ始める',
+    heroJp:'生き甲斐 · 人生マップ · 終活',
+    heroH1:'<em>意義</em>を持って生き、<br><em>尊厳</em>を持って旅立つ',
+    heroSub:'生き甲斐を見つけ、人生を振り返り、終活を計画する。すべての瞬間を大切に。',
+    heroBtn1:'残りの時間を確認する →',heroBtn2:'生き甲斐を見つける',
+    heroNote:'完全無料 · データはブラウザのみ · 登録不要',
+    cdEyebrow:'光陰矢の如し · 時は金なり',cdTitle:'あなたの人生は過ぎていく',
+    cdSub:'恐怖ではなく、明晰さのために。<br>すべての秒は取り戻せない資産です。',
+    cdLabel:'誕生日と予想寿命を入力してカウントダウンを開始してください',
+    cdAgeUnit:'歳',cdBtn:'カウントダウン開始',cdPctSub:'の人生が過ぎました',
+    cdRemaining:'残り',cdTickerLabel:'残り秒数',cdUnits:['年','ヶ月','週','日','時間','分'],
+    ikiEyebrow:'生き甲斐 · Ikigai',ikiH2:'あなたが生きる理由',
+    ikiSub:'生き甲斐とは「生きる意味」という日本語の概念です。四つの円の交点に存在します：愛すること、得意なこと、世界が必要とすること、収入になること。',
+    iki1Title:'好きなこと',iki1Hint:'時間を忘れることは何？活力を感じることは？',iki1Ph:'胸が踊ることを書いてください...',
+    iki2Title:'得意なこと',iki2Hint:'友人から頼まれることは？自分には簡単でも他人には難しいことは？',iki2Ph:'自然に得意なことを書いてください...',
+    iki3Title:'世界が必要とすること',iki3Hint:'どんな問題を解決したい？世界をより良くするために？',iki3Ph:'あなたが見つけたギャップを書いてください...',
+    iki4Title:'収入になること',iki4Hint:'報酬をもらえるスキルやサービスは何ですか？',iki4Ph:'価値を生み出せる方法を書いてください...',
+    ikiFindBtn:'生き甲斐を見つける →',ikiResultLabel:'生き甲斐の輪郭',
+    svgLabels:['好きなこと','得意なこと','世界が必要','収入になる','情熱','専門','使命','天職'],
+    featEy:'六つの側面',featH2:'自分を全体的に見る',featSub:'人生の意味から終活まで、最も完全な人生振り返りスペース。',
+    howEy:'日々のリセット・プロトコル',howH2:'三つの時間帯で人生をリセット',
+    gbEy:'終活',gbH2:'死後の準備は愛の行為',gbIntro:'事前に計画することは悲観的ではありません — 自分と家族への最も深い愛のギフトです。',
+    appEy:'始める',appH2:'あなたの人生マップ',appSub:'データはブラウザに保存され、完全にプライベートです。',
+    ctaH:'自分を本当に見つめる準備はできていますか？',ctaS:'必要なのは静かな時間と自分への誠実さだけ。',ctaBtn:'今すぐ始める →',
+    footer1:'人生マップ · 意義を持って生き、尊厳を持って旅立つ',footer2:'生き甲斐 · Ikigai · 終活',
+    footer3:'データはブラウザのみ保存 · サーバーへの送信なし · 完全無料',
+    quoteText:'あなたが望む人生を持っていないのは、まだその人生を持つべき人になっていないから。変化は行動からではなく、アイデンティティから始まります。',
+  },
+};
+
+function toggleLangMenu(){
+  document.getElementById('langSel').classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('#langSel'))document.getElementById('langSel')?.classList.remove('open');
+});
+
+function setLang(lang){
+  currentLang=lang;
+  const t=LANGS[lang];
+  // selector UI
+  document.getElementById('langCurrent').textContent=t.langLabel;
+  document.querySelectorAll('.lang-opt').forEach(o=>o.classList.remove('active'));
+  document.querySelector(`.lang-opt[onclick="setLang('${lang}')"]`).classList.add('active');
+  document.getElementById('langSel').classList.remove('open');
+  document.documentElement.lang=lang==='zh'?'zh-TW':lang==='zhs'?'zh-CN':lang==='ja'?'ja':'en';
+  // NAV
+  const nl=document.querySelectorAll('.nav-links a');
+  nl[0].textContent=t.navCountdown;nl[1].textContent='Ikigai';nl[2].textContent=t.navGoodbye;nl[3].textContent=t.navStart;
+  document.querySelector('.nav-cta').textContent=t.navCta;
+  // HERO
+  document.querySelector('.hero-jp').textContent=t.heroJp;
+  document.querySelector('.hero-h1').innerHTML=t.heroH1;
+  document.querySelector('.hero-sub').textContent=t.heroSub;
+  const hb=document.querySelectorAll('.hero-btns a');
+  hb[0].textContent=t.heroBtn1;hb[1].textContent=t.heroBtn2;
+  document.querySelector('.hero-note').textContent=t.heroNote;
+  // COUNTDOWN
+  document.querySelector('.cd-eyebrow').textContent=t.cdEyebrow;
+  document.querySelector('.cd-title').textContent=t.cdTitle;
+  document.querySelector('.cd-sub').innerHTML=t.cdSub;
+  const cdSetupLbl=document.querySelector('.cd-setup label');
+  if(cdSetupLbl)cdSetupLbl.textContent=t.cdLabel;
+  const ageSpan=document.getElementById('cdLife')?.nextElementSibling;
+  if(ageSpan)ageSpan.textContent=' '+t.cdAgeUnit;
+  const cdBtnEl=document.querySelector('.cd-btn');
+  if(cdBtnEl)cdBtnEl.textContent=t.cdBtn;
+  const pctSubEl=document.querySelector('.cd-pct-sub');
+  if(pctSubEl)pctSubEl.textContent=t.cdPctSub;
+  // IKIGAI
+  document.querySelector('.iki-eyebrow').textContent=t.ikiEyebrow;
+  document.querySelector('.iki-h2').textContent=t.ikiH2;
+  document.querySelector('.iki-sub').textContent=t.ikiSub;
+  const flds=document.querySelectorAll('.iki-field');
+  if(flds.length>=4){
+    [[t.iki1Title,t.iki1Hint,t.iki1Ph,'iki-love'],[t.iki2Title,t.iki2Hint,t.iki2Ph,'iki-good'],
+     [t.iki3Title,t.iki3Hint,t.iki3Ph,'iki-need'],[t.iki4Title,t.iki4Hint,t.iki4Ph,'iki-pay']
+    ].forEach(([title,hint,ph],i)=>{
+      flds[i].querySelector('.iki-field-title').textContent=title;
+      flds[i].querySelector('.iki-field-hint').textContent=hint;
+      document.getElementById(['iki-love','iki-good','iki-need','iki-pay'][i]).placeholder=ph;
+    });
+  }
+  document.querySelector('.iki-find-btn').textContent=t.ikiFindBtn;
+  document.querySelector('.iki-result-lbl').textContent=t.ikiResultLabel;
+  // SVG labels
+  const svgTxts=document.querySelectorAll('.iki-svg text');
+  if(svgTxts.length>=8)t.svgLabels.forEach((lbl,i)=>{if(svgTxts[i])svgTxts[i].textContent=lbl;});
+  // FEATURES
+  const featFirst=document.querySelector('#features>.rev');
+  if(featFirst){featFirst.querySelector('.sec-ey').textContent=t.featEy;featFirst.querySelector('.sec-h2').textContent=t.featH2;featFirst.querySelector('.sec-sub').textContent=t.featSub;}
+  // HOW
+  const howFirst=document.querySelector('#how>.rev');
+  if(howFirst){howFirst.querySelector('.sec-ey').textContent=t.howEy;howFirst.querySelector('.sec-h2').textContent=t.howH2;}
+  // GOODBYE
+  const gbHdr=document.querySelector('.gb-hdr');
+  if(gbHdr){gbHdr.querySelector('.sec-ey').textContent=t.gbEy;gbHdr.querySelector('.sec-h2').textContent=t.gbH2;gbHdr.querySelector('.gb-intro').textContent=t.gbIntro;}
+  // APP
+  const appHdr=document.querySelector('.app-hdr');
+  if(appHdr){appHdr.querySelector('.sec-ey').textContent=t.appEy;appHdr.querySelector('.sec-h2').textContent=t.appH2;appHdr.querySelector('.sec-sub').textContent=t.appSub;}
+  // QUOTE
+  const qTxt=document.querySelector('.q-text');
+  if(qTxt)qTxt.textContent=t.quoteText;
+  // CTA
+  document.querySelector('.cta-h').textContent=t.ctaH;
+  document.querySelector('.cta-s').textContent=t.ctaS;
+  document.querySelector('.cta-btn').textContent=t.ctaBtn;
+  // FOOTER
+  const fp=document.querySelector('footer p');
+  if(fp)fp.innerHTML=`${t.footer1}<br>${t.footer2}<br><span style="font-size:11px;color:var(--ink4)">${t.footer3}</span>`;
+}
+
+init();
+</script>
+</body>
+</html>

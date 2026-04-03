@@ -126,7 +126,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 40px;height:58px;d
 .fc-title{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px}
 .fc-desc{font-size:12px;color:var(--ink3);line-height:1.65}
 .fc.hi{background:var(--amberL);border-color:#E8C878;position:relative}
-.fc.hi::after{content:'核心';position:absolute;top:14px;right:14px;background:var(--amber);color:#fff;font-size:9px;padding:2px 8px;border-radius:20px}
+.fc.hi::after{content:attr(data-hi-label);position:absolute;top:14px;right:14px;background:var(--amber);color:#fff;font-size:9px;padding:2px 8px;border-radius:20px}
 
 /* HOW */
 #how{padding:96px 24px;max-width:860px;margin:0 auto}
@@ -307,6 +307,7 @@ footer p{font-size:13px;color:var(--ink3);line-height:2}
 .lang-opt:hover{background:var(--bg2)}
 .lang-opt.active{color:var(--amber);font-weight:500}
 </style>
+<script src="langs.js"></script>
 </head>
 <body>
 
@@ -449,14 +450,7 @@ footer p{font-size:13px;color:var(--ink3);line-height:2}
     <h2 class="sec-h2">全面看見自己</h2>
     <p class="sec-sub">從人生意義到身後安排，最完整的人生盤點空間。</p>
   </div>
-  <div class="feat-grid rev">
-    <div class="fc hi"><span class="fc-icon">🔥</span><div class="fc-title">一日重置協議</div><div class="fc-desc">Dan Koe 方法論。早/中/晚三段深度提問，打破慣性，重設人生方向。</div></div>
-    <div class="fc"><span class="fc-icon">生き甲斐</span><div class="fc-title">Ikigai 盤點</div><div class="fc-desc">找到你愛做、擅長、世界需要、能維生四個圓的交集，那就是你活著的理由。</div></div>
-    <div class="fc"><span class="fc-icon">🕰️</span><div class="fc-title">人生各階段回顧</div><div class="fc-desc">童年到此刻，逐一回顧每個階段的記憶、選擇與感受。</div></div>
-    <div class="fc"><span class="fc-icon">🧭</span><div class="fc-title">價值觀盤點</div><div class="fc-desc">找出你真正在乎的事，設定 1/5/10 年的人生方向。</div></div>
-    <div class="fc"><span class="fc-icon">✨</span><div class="fc-title">遺願清單</div><div class="fc-desc">把那些「總有一天要做的事」寫下來，然後開始一一實現。</div></div>
-    <div class="fc"><span class="fc-icon">📋</span><div class="fc-title">好好告別清單</div><div class="fc-desc">臨終照顧、遺囑、葬禮、遺產、保險——五大面向完整規劃。</div></div>
-  </div>
+  <div class="feat-grid rev" id="featGrid"></div>
 </section>
 
 <!-- HOW -->
@@ -465,11 +459,7 @@ footer p{font-size:13px;color:var(--ink3);line-height:2}
     <p class="sec-ey">一日重置協議</p>
     <h2 class="sec-h2">三個時段，重設人生</h2>
   </div>
-  <div class="steps rev">
-    <div class="step"><div class="step-num">01</div><div><div class="step-time">☀️ 早上</div><h3 class="step-h">反願景 + 正願景</h3><p class="step-p">先直視你不想要的人生，再翻轉到你真正渴望的。這個對比是改變最強的燃料。</p><div class="step-qs"><p class="step-q">我已經學會忍受哪些不滿？</p><p class="step-q">如果什麼都不變，10 年後我的人生是什麼樣子？</p><p class="step-q">3 年後，我想要什麼樣的人生？</p></div></div></div>
-    <div class="step"><div class="step-num">02</div><div><div class="step-time">🌤 白天</div><h3 class="step-h">打破自動駕駛</h3><p class="step-p">在不同時刻暫停，問自己這幾個問題。大多數人一輩子都活在自動導航模式。</p><div class="step-qs"><p class="step-q">我現在在逃避什麼？</p><p class="step-q">我在選擇安全，還是活著？</p></div></div></div>
-    <div class="step"><div class="step-num">03</div><div><div class="step-time">🌙 晚上</div><h3 class="step-h">整合 + 設定鏡頭</h3><p class="step-p">整合今天的發現，寫下核心洞見，設定三個「鏡頭」——方向感，而非硬性目標。</p><div class="step-qs"><p class="step-q">一句話：我拒絕繼續過的人生是⋯</p><p class="step-q">明天，那個未來的我會做什麼？</p></div></div></div>
-  </div>
+  <div class="steps rev" id="stepsList"></div>
 </section>
 
 <!-- QUOTE -->
@@ -608,49 +598,134 @@ footer p{font-size:13px;color:var(--ink3);line-height:2}
 </footer>
 
 <script>
-const STAGES=[
-  {id:'child',label:'童年',age:'0–12 歲',emoji:'🌱',prompt:'那時候什麼讓你最快樂？有什麼夢想？'},
-  {id:'teen',label:'青少年',age:'13–18 歲',emoji:'🌿',prompt:'你最重要的轉折或成長是什麼？誰影響了你？'},
-  {id:'young',label:'青年',age:'19–30 歲',emoji:'🌳',prompt:'你做了哪些重要的選擇？有什麼遺憾或驕傲？'},
-  {id:'adult',label:'壯年',age:'31–50 歲',emoji:'🌲',prompt:'你的人生重心是什麼？實現了什麼？失去了什麼？'},
-  {id:'now',label:'此刻',age:'現在',emoji:'✨',prompt:'現在最重要的事是什麼？你希望記住什麼？'},
-];
-const VALUES=[
-  {id:'love',name:'愛與陪伴',e:'❤️'},{id:'freedom',name:'自由',e:'🕊️'},{id:'family',name:'家庭',e:'🏠'},
-  {id:'create',name:'創造力',e:'🎨'},{id:'health',name:'健康',e:'🌿'},{id:'achieve',name:'成就',e:'🏆'},
-  {id:'wisdom',name:'智慧',e:'📚'},{id:'impact',name:'影響力',e:'🌊'},{id:'adventure',name:'冒險',e:'🗺️'},
-  {id:'peace',name:'內心平靜',e:'🌙'},{id:'faith',name:'信仰',e:'🙏'},{id:'wealth',name:'財富',e:'💎'},
-];
-const INIT_BK=['看一次極光','學會一種樂器','寫一封信給每位家人','完成一部短篇小說','為陌生人做一件好事','獨自旅行一次','與老朋友重聚','記錄父母的人生故事'];
-const RECS=['未來的自己','子女','伴侶','父母'];
-const GB=[
-  {title:'臨終照顧',sub:'安寧緩和・DNR・預立醫療決定',icon:'🌿',checks:['與家人討論自己對臨終照顧的期望','了解安寧緩和醫療的申請程序','諮詢預立醫療決定（AD）辦理方式','確認是否需要簽署 DNR 意願書','指定一名醫療代理人','了解居家安寧或住院安寧的差異']},
-  {title:'預立遺囑',sub:'自書・公證・代筆・特留分',icon:'📜',checks:['盤點名下所有財產（含負債）','決定遺囑形式（建議公證遺囑）','指定遺囑執行人並告知對方','確認財產分配符合特留分規定','告知家人或律師遺囑存放位置','每隔 3–5 年重新檢視遺囑']},
-  {title:'葬禮計畫',sub:'土葬・火葬・環保葬・器官捐贈',icon:'🕊️',checks:['決定身後安葬方式','書面記錄告別式的具體偏好','登記器官捐贈意願（如有意願）','了解政府環保葬補助政策','研究葬儀社費用，必要時提前簽約','將葬禮計畫告知家人或執行人']},
-  {title:'遺產繼承',sub:'繼承順序・限定繼承・遺產稅',icon:'⚖️',checks:['生前整理並記錄所有財產清單','了解法定繼承人及應繼分','考量是否透過遺囑或信託提前規劃','確認遺產稅免稅額及可用扣除額','了解生前贈與節稅策略及限制','死亡後六個月內完成遺產稅申報']},
-  {title:'保險給付',sub:'壽險・意外險・勞保・受益人',icon:'🛡️',checks:['整理所有保單，記錄保險公司和受益人','確認每張保單的受益人明確指定','逢重大人生改變時更新受益人','告知家人保單存放位置及理賠聯絡','了解勞保、國保遺屬給付的申請資格','發生事故後盡快通知保險公司']},
-];
-const CD_QUOTES=['「你還有多少個夏天？」','「時間不等人，但你可以好好使用它。」','「每一個今天，都是你剩餘人生的第一天。」','「死亡不是生命的終點，遺忘才是。」','「活著的意義不在於長度，在於深度。」','「現在就是你餘生中最年輕的一刻。」'];
+// ─── LANGUAGE-AWARE DATA ───
+function getStages(lang){
+  const d={
+    zh:[
+      {id:'child',label:'童年',age:'0–12 歲',emoji:'🌱',prompt:'那時候什麼讓你最快樂？有什麼夢想？'},
+      {id:'teen',label:'青少年',age:'13–18 歲',emoji:'🌿',prompt:'你最重要的轉折或成長是什麼？誰影響了你？'},
+      {id:'young',label:'青年',age:'19–30 歲',emoji:'🌳',prompt:'你做了哪些重要的選擇？有什麼遺憾或驕傲？'},
+      {id:'adult',label:'壯年',age:'31–50 歲',emoji:'🌲',prompt:'你的人生重心是什麼？實現了什麼？失去了什麼？'},
+      {id:'now',label:'此刻',age:'現在',emoji:'✨',prompt:'現在最重要的事是什麼？你希望記住什麼？'},
+    ],
+    zhs:[
+      {id:'child',label:'童年',age:'0–12 岁',emoji:'🌱',prompt:'那时候什么让你最快乐？有什么梦想？'},
+      {id:'teen',label:'青少年',age:'13–18 岁',emoji:'🌿',prompt:'你最重要的转折或成长是什么？谁影响了你？'},
+      {id:'young',label:'青年',age:'19–30 岁',emoji:'🌳',prompt:'你做了哪些重要的选择？有什么遗憾或骄傲？'},
+      {id:'adult',label:'壮年',age:'31–50 岁',emoji:'🌲',prompt:'你的人生重心是什么？实现了什么？失去了什么？'},
+      {id:'now',label:'此刻',age:'现在',emoji:'✨',prompt:'现在最重要的事是什么？你希望记住什么？'},
+    ],
+    en:[
+      {id:'child',label:'Childhood',age:'0–12 yrs',emoji:'🌱',prompt:'What made you happiest then? What did you dream about?'},
+      {id:'teen',label:'Teenage',age:'13–18 yrs',emoji:'🌿',prompt:'What was the most important turning point? Who influenced you?'},
+      {id:'young',label:'Young Adult',age:'19–30 yrs',emoji:'🌳',prompt:'What important choices did you make? Any regrets or proud moments?'},
+      {id:'adult',label:'Midlife',age:'31–50 yrs',emoji:'🌲',prompt:'What was the center of your life? What did you achieve or lose?'},
+      {id:'now',label:'Right Now',age:'Present',emoji:'✨',prompt:'What matters most right now? What do you want to remember?'},
+    ],
+    ja:[
+      {id:'child',label:'幼少期',age:'0〜12歳',emoji:'🌱',prompt:'あの頃、何が一番楽しかった？どんな夢があった？'},
+      {id:'teen',label:'思春期',age:'13〜18歳',emoji:'🌿',prompt:'最も大きな転機や成長は？誰に影響を受けた？'},
+      {id:'young',label:'青年期',age:'19〜30歳',emoji:'🌳',prompt:'どんな大切な選択をした？後悔や誇りに思うことは？'},
+      {id:'adult',label:'壮年期',age:'31〜50歳',emoji:'🌲',prompt:'人生の中心は何だった？何を手に入れ、何を失った？'},
+      {id:'now',label:'今この瞬間',age:'現在',emoji:'✨',prompt:'今、最も大切なことは？何を覚えていたい？'},
+    ],
+  };
+  return d[lang]||d.zh;
+}
+function getValues(lang){
+  const d={
+    zh:[{id:'love',name:'愛與陪伴',e:'❤️'},{id:'freedom',name:'自由',e:'🕊️'},{id:'family',name:'家庭',e:'🏠'},{id:'create',name:'創造力',e:'🎨'},{id:'health',name:'健康',e:'🌿'},{id:'achieve',name:'成就',e:'🏆'},{id:'wisdom',name:'智慧',e:'📚'},{id:'impact',name:'影響力',e:'🌊'},{id:'adventure',name:'冒險',e:'🗺️'},{id:'peace',name:'內心平靜',e:'🌙'},{id:'faith',name:'信仰',e:'🙏'},{id:'wealth',name:'財富',e:'💎'}],
+    zhs:[{id:'love',name:'爱与陪伴',e:'❤️'},{id:'freedom',name:'自由',e:'🕊️'},{id:'family',name:'家庭',e:'🏠'},{id:'create',name:'创造力',e:'🎨'},{id:'health',name:'健康',e:'🌿'},{id:'achieve',name:'成就',e:'🏆'},{id:'wisdom',name:'智慧',e:'📚'},{id:'impact',name:'影响力',e:'🌊'},{id:'adventure',name:'冒险',e:'🗺️'},{id:'peace',name:'内心平静',e:'🌙'},{id:'faith',name:'信仰',e:'🙏'},{id:'wealth',name:'财富',e:'💎'}],
+    en:[{id:'love',name:'Love',e:'❤️'},{id:'freedom',name:'Freedom',e:'🕊️'},{id:'family',name:'Family',e:'🏠'},{id:'create',name:'Creativity',e:'🎨'},{id:'health',name:'Health',e:'🌿'},{id:'achieve',name:'Achievement',e:'🏆'},{id:'wisdom',name:'Wisdom',e:'📚'},{id:'impact',name:'Impact',e:'🌊'},{id:'adventure',name:'Adventure',e:'🗺️'},{id:'peace',name:'Inner Peace',e:'🌙'},{id:'faith',name:'Faith',e:'🙏'},{id:'wealth',name:'Wealth',e:'💎'}],
+    ja:[{id:'love',name:'愛と寄り添い',e:'❤️'},{id:'freedom',name:'自由',e:'🕊️'},{id:'family',name:'家族',e:'🏠'},{id:'create',name:'創造性',e:'🎨'},{id:'health',name:'健康',e:'🌿'},{id:'achieve',name:'達成',e:'🏆'},{id:'wisdom',name:'知恵',e:'📚'},{id:'impact',name:'影響力',e:'🌊'},{id:'adventure',name:'冒険',e:'🗺️'},{id:'peace',name:'心の平穏',e:'🌙'},{id:'faith',name:'信仰',e:'🙏'},{id:'wealth',name:'豊かさ',e:'💎'}],
+  };
+  return d[lang]||d.zh;
+}
+function getInitBk(lang){
+  const d={
+    zh:['看一次極光','學會一種樂器','寫一封信給每位家人','完成一部短篇小說','為陌生人做一件好事','獨自旅行一次','與老朋友重聚','記錄父母的人生故事'],
+    zhs:['看一次极光','学会一种乐器','写一封信给每位家人','完成一部短篇小说','为陌生人做一件好事','独自旅行一次','与老朋友重聚','记录父母的人生故事'],
+    en:['See the Northern Lights','Learn a musical instrument','Write a letter to each family member','Finish a short novel','Do something kind for a stranger','Travel solo once','Reunite with old friends','Record your parents\' life stories'],
+    ja:['オーロラを見る','楽器をひとつ習得する','家族一人ひとりに手紙を書く','短編小説を一作完成する','見知らぬ人に親切なことをする','ひとり旅をする','旧友と再会する','両親の人生の物語を記録する'],
+  };
+  return d[lang]||d.zh;
+}
+function getRecs(lang){
+  const d={
+    zh:['未來的自己','子女','伴侶','父母'],
+    zhs:['未来的自己','子女','伴侣','父母'],
+    en:['Future Self','Children','Partner','Parents'],
+    ja:['未来の自分','子どもたち','パートナー','両親'],
+  };
+  return d[lang]||d.zh;
+}
+function getGB(lang){
+  const d={
+    zh:[
+      {title:'臨終照顧',sub:'安寧緩和・DNR・預立醫療決定',icon:'🌿',checks:['與家人討論自己對臨終照顧的期望','了解安寧緩和醫療的申請程序','諮詢預立醫療決定（AD）辦理方式','確認是否需要簽署 DNR 意願書','指定一名醫療代理人','了解居家安寧或住院安寧的差異']},
+      {title:'預立遺囑',sub:'自書・公證・代筆・特留分',icon:'📜',checks:['盤點名下所有財產（含負債）','決定遺囑形式（建議公證遺囑）','指定遺囑執行人並告知對方','確認財產分配符合特留分規定','告知家人或律師遺囑存放位置','每隔 3–5 年重新檢視遺囑']},
+      {title:'葬禮計畫',sub:'土葬・火葬・環保葬・器官捐贈',icon:'🕊️',checks:['決定身後安葬方式','書面記錄告別式的具體偏好','登記器官捐贈意願（如有意願）','了解政府環保葬補助政策','研究葬儀社費用，必要時提前簽約','將葬禮計畫告知家人或執行人']},
+      {title:'遺產繼承',sub:'繼承順序・限定繼承・遺產稅',icon:'⚖️',checks:['生前整理並記錄所有財產清單','了解法定繼承人及應繼分','考量是否透過遺囑或信託提前規劃','確認遺產稅免稅額及可用扣除額','了解生前贈與節稅策略及限制','死亡後六個月內完成遺產稅申報']},
+      {title:'保險給付',sub:'壽險・意外險・勞保・受益人',icon:'🛡️',checks:['整理所有保單，記錄保險公司和受益人','確認每張保單的受益人明確指定','逢重大人生改變時更新受益人','告知家人保單存放位置及理賠聯絡','了解勞保、國保遺屬給付的申請資格','發生事故後盡快通知保險公司']},
+    ],
+    zhs:[
+      {title:'临终照顾',sub:'安宁缓和・DNR・预立医疗决定',icon:'🌿',checks:['与家人讨论自己对临终照顾的期望','了解安宁缓和医疗的申请程序','咨询预立医疗决定（AD）办理方式','确认是否需要签署 DNR 意愿书','指定一名医疗代理人','了解居家安宁或住院安宁的差异']},
+      {title:'预立遗嘱',sub:'自书・公证・代笔・特留份',icon:'📜',checks:['盘点名下所有财产（含负债）','决定遗嘱形式（建议公证遗嘱）','指定遗嘱执行人并告知对方','确认财产分配符合特留份规定','告知家人或律师遗嘱存放位置','每隔 3–5 年重新检视遗嘱']},
+      {title:'葬礼计划',sub:'土葬・火葬・环保葬・器官捐赠',icon:'🕊️',checks:['决定身后安葬方式','书面记录告别式的具体偏好','登记器官捐赠意愿（如有意愿）','了解政府环保葬补助政策','研究殡仪馆费用，必要时提前签约','将葬礼计划告知家人或执行人']},
+      {title:'遗产继承',sub:'继承顺序・限定继承・遗产税',icon:'⚖️',checks:['生前整理并记录所有财产清单','了解法定继承人及应继份','考量是否通过遗嘱或信托提前规划','确认遗产税免税额及可用扣除额','了解生前赠与节税策略及限制','死亡后六个月内完成遗产税申报']},
+      {title:'保险给付',sub:'寿险・意外险・社保・受益人',icon:'🛡️',checks:['整理所有保单，记录保险公司和受益人','确认每张保单的受益人明确指定','逢重大人生改变时更新受益人','告知家人保单存放位置及理赔联络','了解社保遗属给付的申请资格','发生事故后尽快通知保险公司']},
+    ],
+    en:[
+      {title:'End-of-Life Care',sub:'Palliative Care · DNR · Advance Directive',icon:'🌿',checks:['Discuss end-of-life care wishes with family','Learn about palliative care options','Consult on creating an Advance Directive','Decide whether to sign a DNR order','Designate a healthcare proxy','Understand home vs. hospital hospice care']},
+      {title:'Will & Testament',sub:'Handwritten · Notarized · Statutory Share',icon:'📜',checks:['Inventory all assets and liabilities','Choose a will format (notarized recommended)','Appoint an executor and inform them','Ensure distribution complies with legal requirements','Inform family or lawyer of will location','Review the will every 3–5 years']},
+      {title:'Funeral Plan',sub:'Burial · Cremation · Green Burial · Organ Donation',icon:'🕊️',checks:['Decide on burial or cremation','Document specific memorial service preferences','Register organ donation wishes if desired','Look into green burial or eco-friendly options','Research funeral home costs, pre-arrange if needed','Share your funeral plan with family or executor']},
+      {title:'Estate & Inheritance',sub:'Succession · Probate · Estate Tax',icon:'⚖️',checks:['Organize and record a complete asset list','Understand legal heirs and inheritance shares','Consider trusts or estate planning tools','Check estate tax exemptions and deductions','Learn about lifetime gift tax strategies','File estate tax within the required period']},
+      {title:'Insurance Benefits',sub:'Life · Accident · Social Security · Beneficiaries',icon:'🛡️',checks:['Compile all insurance policies with beneficiary info','Confirm each policy has a clearly named beneficiary','Update beneficiaries after major life changes','Inform family of policy locations and claim contacts','Understand survivor benefits eligibility','Notify insurance companies promptly after an event']},
+    ],
+    ja:[
+      {title:'終末期ケア',sub:'緩和ケア・DNR・事前指示書',icon:'🌿',checks:['終末期ケアの希望を家族と話し合う','緩和ケアの利用方法を調べる','事前指示書（AD）の作成を相談する','DNR（蘇生措置拒否）の署名が必要か確認する','医療代理人を指名する','在宅ホスピスと入院ホスピスの違いを理解する']},
+      {title:'遺言書の作成',sub:'自筆・公正証書・秘密証書・遺留分',icon:'📜',checks:['すべての資産と負債を棚卸しする','遺言書の形式を決める（公正証書遺言を推奨）','遺言執行者を指定し本人に伝える','財産分配が遺留分の規定に適合するか確認する','遺言書の保管場所を家族や弁護士に伝える','3〜5年ごとに遺言書を見直す']},
+      {title:'葬儀の計画',sub:'土葬・火葬・自然葬・臓器提供',icon:'🕊️',checks:['希望する埋葬方法を決める','告別式の具体的な希望を書面に残す','臓器提供の意思があれば登録する','自然葬や樹木葬の制度を調べる','葬儀社の費用を調査し、必要に応じて事前契約する','葬儀の計画を家族や執行者に共有する']},
+      {title:'遺産相続',sub:'相続順位・限定承認・相続税',icon:'⚖️',checks:['生前に全資産のリストを整理・記録する','法定相続人と法定相続分を把握する','遺言や信託による事前対策を検討する','相続税の基礎控除額と利用可能な控除を確認する','生前贈与の節税戦略と制限を理解する','死亡後の期限内に相続税申告を完了する']},
+      {title:'保険給付',sub:'生命保険・傷害保険・公的保険・受取人',icon:'🛡️',checks:['すべての保険証券を整理し、保険会社と受取人を記録する','各保険の受取人が明確に指定されているか確認する','人生の大きな変化があった際に受取人を更新する','保険証券の保管場所と請求連絡先を家族に伝える','遺族年金・遺族給付の受給資格を確認する','事故発生後は速やかに保険会社に連絡する']},
+    ],
+  };
+  return d[lang]||d.zh;
+}
+function getCdQuotes(lang){
+  const d={
+    zh:['「你還有多少個夏天？」','「時間不等人，但你可以好好使用它。」','「每一個今天，都是你剩餘人生的第一天。」','「死亡不是生命的終點，遺忘才是。」','「活著的意義不在於長度，在於深度。」','「現在就是你餘生中最年輕的一刻。」'],
+    zhs:['「你还有多少个夏天？」','「时间不等人，但你可以好好使用它。」','「每一个今天，都是你剩余人生的第一天。」','「死亡不是生命的终点，遗忘才是。」','「活着的意义不在于长度，在于深度。」','「现在就是你余生中最年轻的一刻。」'],
+    en:['"How many summers do you have left?"','"Time waits for no one, but you can use it well."','"Every today is the first day of the rest of your life."','"Death is not the end of life — being forgotten is."','"The meaning of life is not in its length, but its depth."','"Right now is the youngest you\'ll ever be for the rest of your life."'],
+    ja:['「あなたに残された夏は、あと何回？」','「時は誰も待たない。でも、大切に使うことはできる。」','「今日という日は、残りの人生の最初の一日。」','「死は人生の終わりではない。忘れられることこそが終わり。」','「生きる意味は長さではなく、深さにある。」','「今この瞬間が、残りの人生で一番若い時。」'],
+  };
+  return d[lang]||d.zh;
+}
 
-let selVals=[],bkItems=INIT_BK.map((t,i)=>({id:i+1,text:t,done:i===2||i===6}));
+let selVals=[],bkItems=[];
 let letters=['','','',''],curRec=0,dayChks={},gbChks={},cdInterval=null;
 
+function initBkItems(){
+  bkItems=getInitBk(currentLang).map((t,i)=>({id:i+1,text:t,done:i===2||i===6}));
+}
+
 function init(){
-  buildStages();buildValues();buildBucket();buildGB();
+  initBkItems();
+  buildFeatures();buildSteps();buildStages();buildValues();buildBucket();buildGB();
   initLetter();initDayChks();initTimeTabs();initAppTabs();initReveal();
-  document.getElementById('lDt').textContent=new Date().toLocaleDateString('zh-TW');
-  document.getElementById('lSig').textContent=`愛你的 我 · ${new Date().getFullYear()}年`;
+  updateDateLabels();
 }
 
 // COUNTDOWN
 function startCD(){
   const b=document.getElementById('cdBirth').value,life=parseInt(document.getElementById('cdLife').value)||85;
-  if(!b){toast('請輸入你的生日');return;}
+  if(!b){toast(LANGS[currentLang].toastBirthday);return;}
   const birth=new Date(b),end=new Date(b);
   end.setFullYear(end.getFullYear()+life);
   document.getElementById('cdSetup').style.display='none';
   document.getElementById('cdDisplay').style.display='block';
-  document.getElementById('cdQuote').textContent=CD_QUOTES[Math.floor(Math.random()*CD_QUOTES.length)];
+  const quotes=getCdQuotes(currentLang);
+  document.getElementById('cdQuote').textContent=quotes[Math.floor(Math.random()*quotes.length)];
   buildWeeks(birth,end,life);
   if(cdInterval)clearInterval(cdInterval);
   updateCD(birth,end,life);
@@ -693,24 +768,26 @@ function buildWeeks(birth,end,life){
 
 // IKIGAI
 function findIkigai(){
+  const t=LANGS[currentLang];
   const love=document.getElementById('iki-love').value.trim();
   const good=document.getElementById('iki-good').value.trim();
   const need=document.getElementById('iki-need').value.trim();
   const pay=document.getElementById('iki-pay').value.trim();
   const filled=[love,good,need,pay].filter(Boolean);
-  if(!filled.length){toast('請至少填寫一個欄位');return;}
+  if(!filled.length){toast(t.toastIkigaiEmpty);return;}
   let txt='';
-  if(filled.length>=3)txt=`從你寫下的內容，你的 Ikigai 輪廓是：一個在「${love||good}」與「${need||pay}」之間找到交集的人。你正在用你擅長且熱愛的方式，為世界創造你獨特的價值。繼續深挖這個交集。`;
-  else txt=`你已經看見一些輪廓了。繼續填寫其他欄位，讓你的 Ikigai 更清晰完整。`;
+  if(filled.length>=3)txt=t.ikigaiResult.replace('{a}',love||good).replace('{b}',need||pay);
+  else txt=t.ikigaiPartial;
   const el=document.getElementById('ikiRes');
   document.getElementById('ikiResTxt').textContent=txt;
   el.style.display='block';
-  toast('Ikigai 已記錄 生き甲斐');
+  toast(t.toastIkigai);
 }
 
 // GOODBYE
 function buildGB(){
-  document.getElementById('gbGrid').innerHTML=GB.map((cat,ci)=>{
+  const gb=getGB(currentLang);
+  document.getElementById('gbGrid').innerHTML=gb.map((cat,ci)=>{
     const chks=cat.checks.map((c,i)=>`
       <div class="gb-check" onclick="togGB(${ci},${i})">
         <div class="gb-box${gbChks[ci+'-'+i]?' done':''}" id="gb-${ci}-${i}">${gbChks[ci+'-'+i]?'<span style="color:#fff;font-size:9px;font-weight:700">✓</span>':''}</div>
@@ -727,19 +804,21 @@ function buildGB(){
   }).join('');
 }
 function togGB(ci,i){
+  const gb=getGB(currentLang);
   const k=ci+'-'+i;gbChks[k]=!gbChks[k];
   const box=document.getElementById(`gb-${ci}-${i}`),txt=document.getElementById(`gbt-${ci}-${i}`);
   box.classList.toggle('done',gbChks[k]);
   box.innerHTML=gbChks[k]?'<span style="color:#fff;font-size:9px;font-weight:700">✓</span>':'';
   txt.classList.toggle('done',gbChks[k]);
-  const done=GB[ci].checks.filter((_,ii)=>gbChks[ci+'-'+ii]).length,pct=Math.round(done/GB[ci].checks.length*100);
+  const done=gb[ci].checks.filter((_,ii)=>gbChks[ci+'-'+ii]).length,pct=Math.round(done/gb[ci].checks.length*100);
   document.getElementById(`gbp-${ci}`).style.width=pct+'%';
-  document.getElementById(`gbpt-${ci}`).textContent=`${done}/${GB[ci].checks.length}`;
+  document.getElementById(`gbpt-${ci}`).textContent=`${done}/${gb[ci].checks.length}`;
 }
 
 // STAGES
 function buildStages(){
-  document.getElementById('sgList').innerHTML=STAGES.map(s=>`
+  const t=LANGS[currentLang],stages=getStages(currentLang);
+  document.getElementById('sgList').innerHTML=stages.map(s=>`
     <div class="sg-card" id="sc-${s.id}">
       <div class="sg-hdr" onclick="togStage('${s.id}')">
         <div class="sg-nm"><span class="sg-e">${s.emoji}</span><div><div class="sg-lbl">${s.label}</div><div class="sg-age">${s.age}</div></div></div>
@@ -747,8 +826,8 @@ function buildStages(){
       </div>
       <div class="sg-body">
         <p class="sg-prompt">${s.prompt}</p>
-        <textarea class="sg-ta" placeholder="在這裡自由書寫..."></textarea>
-        <button class="sbtn" style="margin-top:8px" onclick="toast('已儲存 ✓')">儲存這段記憶</button>
+        <textarea class="sg-ta" placeholder="${t.stagesPh}"></textarea>
+        <button class="sbtn" style="margin-top:8px" onclick="toast('${t.toastSaved}')">${t.stagesSaveBtn}</button>
       </div>
     </div>`).join('');
 }
@@ -756,29 +835,39 @@ function togStage(id){document.getElementById('sc-'+id).classList.toggle('open')
 
 // VALUES
 function buildValues(){
-  document.getElementById('vGrid').innerHTML=VALUES.map(v=>`
+  const vals=getValues(currentLang);
+  document.getElementById('vGrid').innerHTML=vals.map(v=>`
     <div class="vc" id="vc-${v.id}" onclick="togVal('${v.id}')">
       <span class="ve">${v.e}</span><span class="vn">${v.name}</span>
     </div>`).join('');
+  // re-apply selections
+  selVals.forEach(id=>document.getElementById('vc-'+id)?.classList.add('sel'));
+  updateValTags();
 }
 function togVal(id){
+  const t=LANGS[currentLang];
   if(selVals.includes(id))selVals=selVals.filter(x=>x!==id);
-  else{if(selVals.length>=5){toast('最多選 5 個');return;}selVals.push(id);}
-  VALUES.forEach(v=>document.getElementById('vc-'+v.id)?.classList.toggle('sel',selVals.includes(v.id)));
-  const box=document.getElementById('stbBox');
-  if(selVals.length>0){box.style.display='block';document.getElementById('stbTags').innerHTML=selVals.map(sid=>{const v=VALUES.find(x=>x.id===sid);return`<span class="stag">${v.e} ${v.name}</span>`;}).join('');}
+  else{if(selVals.length>=5){toast(t.toastMaxValues);return;}selVals.push(id);}
+  const vals=getValues(currentLang);
+  vals.forEach(v=>document.getElementById('vc-'+v.id)?.classList.toggle('sel',selVals.includes(v.id)));
+  updateValTags();
+}
+function updateValTags(){
+  const vals=getValues(currentLang),box=document.getElementById('stbBox');
+  if(selVals.length>0){box.style.display='block';document.getElementById('stbTags').innerHTML=selVals.map(sid=>{const v=vals.find(x=>x.id===sid);return v?`<span class="stag">${v.e} ${v.name}</span>`:'';}).join('');}
   else box.style.display='none';
 }
 
 // BUCKET
 function buildBucket(){
-  const done=bkItems.filter(i=>i.done).length,pct=Math.round(done/bkItems.length*100);
+  const t=LANGS[currentLang];
+  const done=bkItems.filter(i=>i.done).length,total=bkItems.length,pct=total?Math.round(done/total*100):0;
   document.getElementById('bkList').innerHTML=bkItems.map(it=>`
     <div class="bi" onclick="togBk(${it.id})">
       <div class="cc${it.done?' done':''}" id="bc-${it.id}">${it.done?'<span style="color:#fff;font-size:10px;font-weight:700">✓</span>':''}</div>
       <span class="bt${it.done?' done':''}">${it.text}</span>
     </div>`).join('');
-  document.getElementById('bkPt').textContent=`已完成 ${done}/${bkItems.length} 項 · ${pct}%`;
+  document.getElementById('bkPt').textContent=t.bucketDone.replace('{done}',done).replace('{total}',total).replace('{pct}',pct);
   document.getElementById('bkBar').style.width=pct+'%';
 }
 function togBk(id){bkItems=bkItems.map(i=>i.id===id?{...i,done:!i.done}:i);buildBucket();}
@@ -787,15 +876,16 @@ function addBk(){const el=document.getElementById('nBk');if(!el.value.trim())ret
 // LETTER
 function initLetter(){
   document.querySelectorAll('#recTabs .rtab').forEach(t=>t.addEventListener('click',()=>{
+    const lang=LANGS[currentLang],recs=getRecs(currentLang);
     letters[curRec]=document.getElementById('lArea').value;
     curRec=parseInt(t.dataset.idx);
     document.querySelectorAll('#recTabs .rtab').forEach(x=>x.classList.remove('active'));
     t.classList.add('active');
-    document.getElementById('lSal').textContent=`親愛的 ${RECS[curRec]}，`;
+    document.getElementById('lSal').textContent=lang.letterSal.replace('{name}',recs[curRec]);
     document.getElementById('lArea').value=letters[curRec];
   }));
 }
-function saveLetter(){letters[curRec]=document.getElementById('lArea').value;toast('信件已封存 ✉️');}
+function saveLetter(){letters[curRec]=document.getElementById('lArea').value;toast(LANGS[currentLang].toastLetterSaved);}
 
 // DAY CHECKS
 function initDayChks(){
@@ -997,7 +1087,6 @@ document.addEventListener('click',function(e){
 function setLang(lang){
   currentLang=lang;
   const t=LANGS[lang];
-  // selector UI
   document.getElementById('langCurrent').textContent=t.langLabel;
   document.querySelectorAll('.lang-opt').forEach(o=>o.classList.remove('active'));
   document.querySelector(`.lang-opt[onclick="setLang('${lang}')"]`).classList.add('active');
@@ -1042,18 +1131,15 @@ function setLang(lang){
   }
   document.querySelector('.iki-find-btn').textContent=t.ikiFindBtn;
   document.querySelector('.iki-result-lbl').textContent=t.ikiResultLabel;
-  // SVG labels
   const svgTxts=document.querySelectorAll('.iki-svg text');
   if(svgTxts.length>=8)t.svgLabels.forEach((lbl,i)=>{if(svgTxts[i])svgTxts[i].textContent=lbl;});
-  // FEATURES
-  const featFirst=document.querySelector('#features>.rev');
-  if(featFirst){featFirst.querySelector('.sec-ey').textContent=t.featEy;featFirst.querySelector('.sec-h2').textContent=t.featH2;featFirst.querySelector('.sec-sub').textContent=t.featSub;}
-  // HOW
-  const howFirst=document.querySelector('#how>.rev');
-  if(howFirst){howFirst.querySelector('.sec-ey').textContent=t.howEy;howFirst.querySelector('.sec-h2').textContent=t.howH2;}
+  // FEATURES & STEPS
+  buildFeatures();buildSteps();
   // GOODBYE
   const gbHdr=document.querySelector('.gb-hdr');
   if(gbHdr){gbHdr.querySelector('.sec-ey').textContent=t.gbEy;gbHdr.querySelector('.sec-h2').textContent=t.gbH2;gbHdr.querySelector('.gb-intro').textContent=t.gbIntro;}
+  // STAGES/VALUES/BUCKET rebuilt
+  buildStages();buildValues();buildBucket();buildGB();initLetter();
   // APP
   const appHdr=document.querySelector('.app-hdr');
   if(appHdr){appHdr.querySelector('.sec-ey').textContent=t.appEy;appHdr.querySelector('.sec-h2').textContent=t.appH2;appHdr.querySelector('.sec-sub').textContent=t.appSub;}
@@ -1067,6 +1153,7 @@ function setLang(lang){
   // FOOTER
   const fp=document.querySelector('footer p');
   if(fp)fp.innerHTML=`${t.footer1}<br>${t.footer2}<br><span style="font-size:11px;color:var(--ink4)">${t.footer3}</span>`;
+  updateDateLabels();
 }
 
 init();

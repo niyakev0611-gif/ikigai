@@ -491,74 +491,74 @@ footer p{font-size:13px;color:var(--ink3);line-height:2}
     <p class="sec-sub" style="margin:0 auto;text-align:center">資料即時存在你的瀏覽器，完全私密。</p>
   </div>
   <div class="app-tabs" id="appTabs">
-    <button class="app-tab active" data-panel="reset">🔥 一日重置</button>
-    <button class="app-tab" data-panel="stages">🕰️ 人生回顧</button>
-    <button class="app-tab" data-panel="values">🧭 價值觀</button>
-    <button class="app-tab" data-panel="bucket">✨ 遺願清單</button>
-    <button class="app-tab" data-panel="letter">✉️ 給未來的信</button>
+    <button class="app-tab active" data-panel="reset" id="appTab-reset">🔥 一日重置</button>
+    <button class="app-tab" data-panel="stages" id="appTab-stages">🕰️ 人生回顧</button>
+    <button class="app-tab" data-panel="values" id="appTab-values">🧭 價值觀</button>
+    <button class="app-tab" data-panel="bucket" id="appTab-bucket">✨ 遺願清單</button>
+    <button class="app-tab" data-panel="letter" id="appTab-letter">✉️ 給未來的信</button>
   </div>
 
   <!-- RESET PANEL -->
   <div class="panel active" id="panel-reset">
-    <div class="rb"><div class="rb-lbl">Dan Koe 方法論</div><h3 class="rb-title">改變身份認同，而非行為</h3><p class="rb-sub">你不需要更多紀律。你需要看清自己在優化什麼，然後重新選擇你是誰。</p></div>
-    <div class="time-tabs"><button class="time-tab active" data-time="morning">☀️ 早上</button><button class="time-tab" data-time="day">🌤 白天</button><button class="time-tab" data-time="evening">🌙 晚上</button></div>
+    <div class="rb"><div class="rb-lbl" id="resetLabel">Dan Koe 方法論</div><h3 class="rb-title" id="resetTitle">改變身份認同，而非行為</h3><p class="rb-sub" id="resetSub">你不需要更多紀律。你需要看清自己在優化什麼，然後重新選擇你是誰。</p></div>
+    <div class="time-tabs"><button class="time-tab active" data-time="morning" id="timeTab-morning">☀️ 早上</button><button class="time-tab" data-time="day" id="timeTab-day">🌤 白天</button><button class="time-tab" data-time="evening" id="timeTab-evening">🌙 晚上</button></div>
     <div id="t-morning">
-      <div class="ins-box"><div class="ins-t">第一步：反願景（Anti-Vision）</div><div class="ins-b">先直視你不想要的人生。這個不適感會成為你改變最強的燃料。</div></div>
-      <div class="qb"><div class="ql">我已經學會忍受哪些不滿？</div><textarea class="qi" id="a1" placeholder="說真心話，不用美化..."></textarea></div>
-      <div class="qb"><div class="ql">我一直在抱怨但從不改變什麼？</div><textarea class="qi" id="a2" placeholder="那個你反覆提到卻停在原地的事..."></textarea></div>
-      <div class="qb"><div class="ql">如果什麼都不變，5–10 年後我的人生是什麼樣子？</div><textarea class="qi" id="a3" placeholder="想像最真實的未來..."></textarea></div>
-      <div class="qb"><div class="ql">我必須放棄什麼身份認同才能改變？</div><textarea class="qi" id="a4" placeholder="「我是一個＿＿的人」讓你卡住了嗎？"></textarea></div>
-      <div class="ins-box" style="margin-top:24px"><div class="ins-t">第二步：正願景（Vision）</div><div class="ins-b">現在把視角翻轉。你想要什麼？那個版本的你是誰？</div></div>
-      <div class="qb"><div class="ql">如果能打個響指，3 年後我想要什麼樣的人生？</div><textarea class="qi" id="v1" placeholder="盡量具體，住在哪裡、做什麼、身邊是誰..."></textarea></div>
-      <div class="qb"><div class="ql">我必須對自己相信什麼，那種人生才會感覺自然？</div><textarea class="qi" id="v2" placeholder="「我是一個會⋯⋯的人」"></textarea></div>
-      <div class="qb"><div class="ql">那個版本的我，這週會做什麼？</div><textarea class="qi" id="v3" placeholder="最小的、可立刻執行的行動..."></textarea></div>
-      <button class="sbtn" onclick="switchTime('day');toast('早上篇已儲存 ☀️')">儲存，前往白天篇 →</button>
+      <div class="ins-box"><div class="ins-t" id="antivisionLabel">第一步：反願景（Anti-Vision）</div><div class="ins-b" id="antivisionDesc">先直視你不想要的人生。這個不適感會成為你改變最強的燃料。</div></div>
+      <div class="qb"><div class="ql" id="ql-a1">我已經學會忍受哪些不滿？</div><textarea class="qi" id="a1" placeholder="說真心話，不用美化..."></textarea></div>
+      <div class="qb"><div class="ql" id="ql-a2">我一直在抱怨但從不改變什麼？</div><textarea class="qi" id="a2" placeholder="那個你反覆提到卻停在原地的事..."></textarea></div>
+      <div class="qb"><div class="ql" id="ql-a3">如果什麼都不變，5–10 年後我的人生是什麼樣子？</div><textarea class="qi" id="a3" placeholder="想像最真實的未來..."></textarea></div>
+      <div class="qb"><div class="ql" id="ql-a4">我必須放棄什麼身份認同才能改變？</div><textarea class="qi" id="a4" placeholder="「我是一個＿＿的人」讓你卡住了嗎？"></textarea></div>
+      <div class="ins-box" style="margin-top:24px"><div class="ins-t" id="visionLabel">第二步：正願景（Vision）</div><div class="ins-b" id="visionDesc">現在把視角翻轉。你想要什麼？那個版本的你是誰？</div></div>
+      <div class="qb"><div class="ql" id="ql-v1">如果能打個響指，3 年後我想要什麼樣的人生？</div><textarea class="qi" id="v1" placeholder="盡量具體，住在哪裡、做什麼、身邊是誰..."></textarea></div>
+      <div class="qb"><div class="ql" id="ql-v2">我必須對自己相信什麼，那種人生才會感覺自然？</div><textarea class="qi" id="v2" placeholder="「我是一個會⋯⋯的人」"></textarea></div>
+      <div class="qb"><div class="ql" id="ql-v3">那個版本的我，這週會做什麼？</div><textarea class="qi" id="v3" placeholder="最小的、可立刻執行的行動..."></textarea></div>
+      <button class="sbtn" id="btnSaveAm" onclick="switchTime('day');toast(LANGS[currentLang].toastMorning)">儲存，前往白天篇 →</button>
     </div>
     <div id="t-day" style="display:none">
-      <div class="ins-box"><div class="ins-t">打破自動駕駛</div><div class="ins-b">在白天不同時刻暫停，問自己這四個問題。勾選代表你今天有意識地覺察了。</div></div>
+      <div class="ins-box"><div class="ins-t" id="dayTitle">打破自動駕駛</div><div class="ins-b" id="dayDesc">在白天不同時刻暫停，問自己這四個問題。勾選代表你今天有意識地覺察了。</div></div>
       <div id="dayChecks">
         <div class="cr" data-id="d1"><div class="cc" id="cc-d1"></div><span class="cl" id="cl-d1">我現在在逃避什麼？</span></div>
         <div class="cr" data-id="d2"><div class="cc" id="cc-d2"></div><span class="cl" id="cl-d2">我的行為說明我真正想要什麼？</span></div>
         <div class="cr" data-id="d3"><div class="cc" id="cc-d3"></div><span class="cl" id="cl-d3">我在選擇安全，還是活著？</span></div>
         <div class="cr" data-id="d4"><div class="cc" id="cc-d4"></div><span class="cl" id="cl-d4">今天什麼時候我感覺最有生命力？</span></div>
       </div>
-      <button class="sbtn" style="margin-top:16px" onclick="switchTime('evening');toast('白天覺察已記錄 🌤')">前往晚上整合 →</button>
+      <button class="sbtn" id="btnSaveDay" style="margin-top:16px" onclick="switchTime('evening');toast(LANGS[currentLang].toastDay)">前往晚上整合 →</button>
     </div>
     <div id="t-evening" style="display:none">
-      <div class="comp" id="compCard"><div class="comp-i">🎯</div><div class="comp-h">一日重置完成！</div><p class="comp-s">你今天做了很多人一輩子都不願意做的事：誠實地面對自己。</p></div>
-      <div class="ins-box" id="evIns"><div class="ins-t">整合今天的發現</div><div class="ins-b">不要評判你寫下的內容。這些誠實的文字，是改變的起點。</div></div>
-      <div class="qb"><div class="ql">我為什麼真的一直卡在這裡？</div><textarea class="qi" id="e1" placeholder="不要表面答案，往深處挖..."></textarea></div>
-      <div class="qb"><div class="ql">哪個內在模式是我真正的敵人？</div><textarea class="qi" id="e2" placeholder="恐懼評判？害怕失敗？貪圖舒適？"></textarea></div>
-      <div class="qb"><div class="ql">一句話：我拒絕繼續過的人生是⋯</div><textarea class="qi sh" id="e3" placeholder="寫下那個「絕對不行」的畫面"></textarea></div>
-      <div class="qb"><div class="ql">一句話：我正在建造的是⋯</div><textarea class="qi sh" id="e4" placeholder="你的北極星，簡短有力"></textarea></div>
+      <div class="comp" id="compCard"><div class="comp-i">🎯</div><div class="comp-h" id="compTitle">一日重置完成！</div><p class="comp-s" id="compSub">你今天做了很多人一輩子都不願意做的事：誠實地面對自己。</p></div>
+      <div class="ins-box" id="evIns"><div class="ins-t" id="eveningTitle">整合今天的發現</div><div class="ins-b" id="eveningDesc">不要評判你寫下的內容。這些誠實的文字，是改變的起點。</div></div>
+      <div class="qb"><div class="ql" id="ql-e1">我為什麼真的一直卡在這裡？</div><textarea class="qi" id="e1" placeholder="不要表面答案，往深處挖..."></textarea></div>
+      <div class="qb"><div class="ql" id="ql-e2">哪個內在模式是我真正的敵人？</div><textarea class="qi" id="e2" placeholder="恐懼評判？害怕失敗？貪圖舒適？"></textarea></div>
+      <div class="qb"><div class="ql" id="ql-e3">一句話：我拒絕繼續過的人生是⋯</div><textarea class="qi sh" id="e3" placeholder="寫下那個「絕對不行」的畫面"></textarea></div>
+      <div class="qb"><div class="ql" id="ql-e4">一句話：我正在建造的是⋯</div><textarea class="qi sh" id="e4" placeholder="你的北極星，簡短有力"></textarea></div>
       <div class="lens-sec">
-        <h3 class="lens-h">設定三個「鏡頭」</h3>
-        <p class="lens-s">方向感，而非硬性目標。讓它們引導你注意什麼、行動什麼。</p>
-        <div class="lr"><span class="ll">1 年後</span><input class="li" id="ly" placeholder="舊模式破碎的證明是⋯"></div>
-        <div class="lr"><span class="ll">這個月</span><input class="li" id="lm" placeholder="一個具體的專案是⋯"></div>
-        <div class="lr"><span class="ll">明天</span><input class="li" id="ld" placeholder="那個未來的我會做的事⋯"></div>
+        <h3 class="lens-h" id="lensTitle">設定三個「鏡頭」</h3>
+        <p class="lens-s" id="lensDesc">方向感，而非硬性目標。讓它們引導你注意什麼、行動什麼。</p>
+        <div class="lr"><span class="ll" id="ll-ly">1 年後</span><input class="li" id="ly" placeholder="舊模式破碎的證明是⋯"></div>
+        <div class="lr"><span class="ll" id="ll-lm">這個月</span><input class="li" id="lm" placeholder="一個具體的專案是⋯"></div>
+        <div class="lr"><span class="ll" id="ll-ld">明天</span><input class="li" id="ld" placeholder="那個未來的我會做的事⋯"></div>
       </div>
-      <button class="sbtn" onclick="saveEvening()">封存今日的洞見 🔥</button>
-      <div class="sc" id="scCard"><div class="sc-t">今日摘要</div><div id="scRows"></div></div>
+      <button class="sbtn" id="btnSaveEvening" onclick="saveEvening()">封存今日的洞見 🔥</button>
+      <div class="sc" id="scCard"><div class="sc-t" id="scTitle">今日摘要</div><div id="scRows"></div></div>
     </div>
   </div>
 
   <!-- STAGES -->
   <div class="panel" id="panel-stages">
-    <p style="font-size:14px;color:var(--ink3);margin-bottom:20px;line-height:1.7">沒有對錯，只有你真實的感受。慢慢寫，記錄任何浮現的片段。</p>
+    <p id="stagesIntro" style="font-size:14px;color:var(--ink3);margin-bottom:20px;line-height:1.7">沒有對錯，只有你真實的感受。慢慢寫，記錄任何浮現的片段。</p>
     <div id="sgList"></div>
   </div>
 
   <!-- VALUES -->
   <div class="panel" id="panel-values">
-    <p style="font-size:13px;color:var(--ink3);margin-bottom:14px">選出最能代表你核心的價值觀（最多 5 個）</p>
+    <p id="valuesIntro" style="font-size:13px;color:var(--ink3);margin-bottom:14px">選出最能代表你核心的價值觀（最多 5 個）</p>
     <div class="vg" id="vGrid"></div>
-    <div class="stb" id="stbBox"><div class="stb-l">我最重視的事</div><div class="stb-t" id="stbTags"></div></div>
-    <div style="margin-top:6px"><h3 style="font-family:var(--serif);font-size:18px;color:var(--ink);margin-bottom:14px">人生目標</h3>
-    <div class="gr"><div class="gl">1 年後，我希望⋯</div><input class="gi" id="g1" placeholder="寫下你的一年目標"></div>
-    <div class="gr"><div class="gl">5 年後，我希望⋯</div><input class="gi" id="g5" placeholder="寫下你的五年目標"></div>
-    <div class="gr"><div class="gl">10 年後，我希望⋯</div><input class="gi" id="g10" placeholder="寫下你的十年目標"></div>
-    <button class="sbtn" style="margin-top:4px" onclick="toast('價值觀已儲存 🧭')">儲存我的價值觀</button></div>
+    <div class="stb" id="stbBox"><div class="stb-l" id="valuesSbTitle">我最重視的事</div><div class="stb-t" id="stbTags"></div></div>
+    <div style="margin-top:6px"><h3 id="goalsTitle" style="font-family:var(--serif);font-size:18px;color:var(--ink);margin-bottom:14px">人生目標</h3>
+    <div class="gr"><div class="gl" id="gl-g1">1 年後，我希望⋯</div><input class="gi" id="g1" placeholder="寫下你的一年目標"></div>
+    <div class="gr"><div class="gl" id="gl-g5">5 年後，我希望⋯</div><input class="gi" id="g5" placeholder="寫下你的五年目標"></div>
+    <div class="gr"><div class="gl" id="gl-g10">10 年後，我希望⋯</div><input class="gi" id="g10" placeholder="寫下你的十年目標"></div>
+    <button class="sbtn" id="btnSaveValues" style="margin-top:4px" onclick="toast(LANGS[currentLang].toastValues)">儲存我的價值觀</button></div>
   </div>
 
   <!-- BUCKET -->
@@ -566,7 +566,7 @@ footer p{font-size:13px;color:var(--ink3);line-height:2}
     <div class="pt" id="bkPt">已完成 0/8 項</div>
     <div class="pw"><div class="pb" id="bkBar" style="width:0%"></div></div>
     <div id="bkList"></div>
-    <div class="ar"><input class="ai" id="nBk" placeholder="加入新的心願⋯"><button class="ab" onclick="addBk()">新增</button></div>
+    <div class="ar"><input class="ai" id="nBk" placeholder="加入新的心願⋯"><button class="ab" id="btnBucketAdd" onclick="addBk()">新增</button></div>
   </div>
 
   <!-- LETTER -->
@@ -580,7 +580,7 @@ footer p{font-size:13px;color:var(--ink3);line-height:2}
     <div class="lmeta"><span class="lsal" id="lSal">親愛的未來的自己，</span><span class="ldt" id="lDt"></span></div>
     <textarea class="lta" id="lArea" placeholder="從心開始寫⋯&#10;&#10;有什麼話想說？有什麼想讓對方知道的事？&#10;這封信，會在正確的時間被讀到。"></textarea>
     <p class="lsig" id="lSig"></p>
-    <button class="sbtn" style="margin-top:10px" onclick="saveLetter()">封存這封信 ✉️</button>
+    <button class="sbtn" id="btnSaveLetter" style="margin-top:10px" onclick="saveLetter()">封存這封信 ✉️</button>
   </div>
 </section>
 
@@ -713,7 +713,7 @@ function init(){
   initBkItems();
   buildFeatures();buildSteps();buildStages();buildValues();buildBucket();buildGB();
   initLetter();initDayChks();initTimeTabs();initAppTabs();initReveal();
-  updateDateLabels();
+  updateDateLabels();updateUIText();
 }
 
 // COUNTDOWN
@@ -924,13 +924,14 @@ function saveEvening(){
   }
   if(e3||e4||ld){
     const sc=document.getElementById('scCard');sc.style.display='block';
+    const _t=LANGS[currentLang];
     document.getElementById('scRows').innerHTML=[
-      e3?`<div class="sr"><span class="si">🚫</span><div><div class="sm">拒絕繼續</div><div class="sv">${e3}</div></div></div>`:'',
-      e4?`<div class="sr"><span class="si">🧭</span><div><div class="sm">正在建造</div><div class="sv">${e4}</div></div></div>`:'',
-      ld?`<div class="sr" style="border-bottom:none"><span class="si">⚡</span><div><div class="sm">明天就做</div><div class="sv">${ld}</div></div></div>`:'',
+      e3?`<div class="sr"><span class="si">🚫</span><div><div class="sm">${_t.smRefuse}</div><div class="sv">${e3}</div></div></div>`:'',
+      e4?`<div class="sr"><span class="si">🧭</span><div><div class="sm">${_t.smBuilding}</div><div class="sv">${e4}</div></div></div>`:'',
+      ld?`<div class="sr" style="border-bottom:none"><span class="si">⚡</span><div><div class="sm">${_t.smTomorrow}</div><div class="sv">${ld}</div></div></div>`:'',
     ].join('');
   }
-  toast('一日重置完成 🔥');
+  toast(LANGS[currentLang].toastEvening);
 }
 
 // TOAST
@@ -953,6 +954,70 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 // ───────── LANGUAGE SWITCHER ─────────
 let currentLang='zh';
+
+function updateUIText(){
+  const t=LANGS[currentLang];
+  // App tabs
+  ['reset','stages','values','bucket','letter'].forEach(p=>{
+    const el=document.getElementById('appTab-'+p);
+    if(el)el.textContent=t['tab'+p.charAt(0).toUpperCase()+p.slice(1)];
+  });
+  // Reset panel header
+  ['resetLabel','resetTitle','resetSub','antivisionLabel','antivisionDesc',
+   'visionLabel','visionDesc','dayTitle','dayDesc','compTitle','compSub',
+   'eveningTitle','eveningDesc','lensTitle','lensDesc','scTitle',
+   'stagesIntro','valuesIntro','valuesSbTitle','goalsTitle'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.textContent=t[id];
+  });
+  // Time tabs
+  document.getElementById('timeTab-morning').textContent=t.step1Time;
+  document.getElementById('timeTab-day').textContent=t.step2Time;
+  document.getElementById('timeTab-evening').textContent=t.step3Time;
+  // Morning questions & placeholders
+  [['a1','q_a1','ph_a1'],['a2','q_a2','ph_a2'],['a3','q_a3','ph_a3'],['a4','q_a4','ph_a4'],
+   ['v1','q_v1','ph_v1'],['v2','q_v2','ph_v2'],['v3','q_v3','ph_v3']].forEach(([id,qk,phk])=>{
+    const ql=document.getElementById('ql-'+id);if(ql)ql.textContent=t[qk];
+    const ta=document.getElementById(id);if(ta)ta.placeholder=t[phk];
+  });
+  // Evening questions & placeholders
+  [['e1','q_e1','ph_e1'],['e2','q_e2','ph_e2'],['e3','q_e3','ph_e3'],['e4','q_e4','ph_e4']].forEach(([id,qk,phk])=>{
+    const ql=document.getElementById('ql-'+id);if(ql)ql.textContent=t[qk];
+    const ta=document.getElementById(id);if(ta)ta.placeholder=t[phk];
+  });
+  // Day check labels
+  [['d1','d1'],['d2','d2'],['d3','d3'],['d4','d4']].forEach(([id,tk])=>{
+    const el=document.getElementById('cl-'+id);if(el)el.textContent=t[tk];
+  });
+  // Lens labels & placeholders
+  document.getElementById('ll-ly').textContent=t.lens1y;
+  document.getElementById('ll-lm').textContent=t.lensMonth;
+  document.getElementById('ll-ld').textContent=t.lensTomorrow;
+  document.getElementById('ly').placeholder=t.ph_ly;
+  document.getElementById('lm').placeholder=t.ph_lm;
+  document.getElementById('ld').placeholder=t.ph_ld;
+  // Save buttons
+  document.getElementById('btnSaveAm').textContent=t.btnSaveAm;
+  document.getElementById('btnSaveDay').textContent=t.btnSaveDay;
+  document.getElementById('btnSaveEvening').textContent=t.btnSaveEvening;
+  // Values panel
+  document.getElementById('gl-g1').textContent=t.goal1y;
+  document.getElementById('gl-g5').textContent=t.goal5y;
+  document.getElementById('gl-g10').textContent=t.goal10y;
+  document.getElementById('g1').placeholder=t.ph_g1;
+  document.getElementById('g5').placeholder=t.ph_g5;
+  document.getElementById('g10').placeholder=t.ph_g10;
+  document.getElementById('btnSaveValues').textContent=t.btnSaveValues;
+  // Bucket panel
+  document.getElementById('nBk').placeholder=t.bucketAddPh;
+  document.getElementById('btnBucketAdd').textContent=t.bucketAdd;
+  // Letter panel — update recipient tabs
+  const recs=getRecs(currentLang);
+  document.querySelectorAll('#recTabs .rtab').forEach((tab,i)=>{if(recs[i])tab.textContent=recs[i];});
+  document.getElementById('lArea').placeholder=t.letterPh;
+  document.getElementById('btnSaveLetter').textContent=t.btnSaveLetter;
+  // Update letter salutation for current recipient
+  document.getElementById('lSal').textContent=t.letterSal.replace('{name}',recs[curRec]||recs[0]);
+}
 
 function toggleLangMenu(){
   document.getElementById('langSel').classList.toggle('open');
@@ -1017,6 +1082,7 @@ function setLang(lang){
   if(gbHdr){gbHdr.querySelector('.sec-ey').textContent=t.gbEy;gbHdr.querySelector('.sec-h2').textContent=t.gbH2;gbHdr.querySelector('.gb-intro').textContent=t.gbIntro;}
   // STAGES/VALUES/BUCKET rebuilt
   buildStages();buildValues();buildBucket();buildGB();initLetter();
+  updateUIText();
   // APP
   const appHdr=document.querySelector('.app-hdr');
   if(appHdr){appHdr.querySelector('.sec-ey').textContent=t.appEy;appHdr.querySelector('.sec-h2').textContent=t.appH2;appHdr.querySelector('.sec-sub').textContent=t.appSub;}
